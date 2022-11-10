@@ -5,15 +5,13 @@ const {
   getMyWordCollection,
   deleteWordCollection,
   deleteWord,
+  pushWord
 } = require('../controllers/word');
-/*const {
-  validationMovieId,
-  validationCreateMovies,
-} = require('../validation/validation');*/
 
-router.get('/word', getMyWordCollection);
-router.post('/word', createWordCollection);
-router.delete('/word/:wordId', deleteWordCollection);
+router.get('/words', getMyWordCollection);
+router.post('/words', createWordCollection);
+router.delete('/words/:wordId', deleteWordCollection);
 router.delete('/word/:wordsId/:wordId', deleteWord);
+router.patch('/word/:wordId', pushWord);
 
 module.exports = router;

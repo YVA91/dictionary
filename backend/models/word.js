@@ -15,4 +15,4 @@ const cardSchema = new mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model('movie', cardSchema);
+module.exports = mongoose.model('word', cardSchema);
