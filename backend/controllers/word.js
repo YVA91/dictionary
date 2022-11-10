@@ -62,7 +62,6 @@ module.exports.deleteWord = async (req, res, next) => {
   const Id = req.params.wordsId;
   const WId = req.params.wordId;
   try {
-    //const WordId = await Words.findById(Id);
     const WordId = await Words.findById(Id);
     const WordR = await WordId.updateOne({ $pull: { "word": { "_id" : WId }} });
     res.status(200).send({ WordR });
@@ -81,7 +80,6 @@ module.exports.pushWord = async (req, res, next) => {
   } = req.body;
   try {
     const WordId = await Words.findById(Id).updateOne({ $push: { "word": { wordEn, wordRu}}});
-    //const WordR = await WordId.updateOne({ $push: { "word": { wordEn, wordRu}} });
     res.status(200).send({ WordId});
   } catch (err) {
     if (err.name === 'CastError') {
