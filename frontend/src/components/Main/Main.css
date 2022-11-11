@@ -7,7 +7,6 @@
 }
 
 .mainTitle {
-  position: absolute;
   font-family: 'Tucsonone', Arial, sans-serif;
   font-weight: 400;
   font-size: 100px;
@@ -20,7 +19,22 @@
   text-rendering: optimizeLegibility;
   color: #383aaa;
   margin: 0;
-  padding: 0;
-  z-index: 0;
+  padding: 0 20px;
   opacity: .4;
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+  .mainTitle {
+    font-size: 56px;
+    line-height: 60px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .mainTitle {
+    font-size: 32px;
+    line-height: 36px;
+  }
 }
