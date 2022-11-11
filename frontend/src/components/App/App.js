@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 //import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Word from "../Word/Word";
+import PopupCategory from "../PopupCategory/PopupCategory"
 
 function App() {
   const [isOpenMenu, setisOpenMenu] = useState(false);
@@ -24,9 +25,8 @@ function App() {
         <Route exact path="/word">
           <Word/>
         </Route>
-
-
       </Switch>
+      <PopupCategory/>
     </>
   )
 }

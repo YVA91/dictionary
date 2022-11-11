@@ -1,0 +1,106 @@
+.popupCategory {
+  display: flex;
+  /*visibility: hidden;
+  opacity: 0;*/
+  transition: visibility 0.3s, opacity 0.3s linear;
+  background-color: rgba(0, 0, 0, .5);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  visibility: visible;
+  opacity: 1;
+}
+
+.popupCategory__container {
+  width: 60%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.popupCategory__title {
+  font-family: 'Tucsonone', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 27px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  color: #3f1174;
+  text-align: center;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.popupCategory__close {
+  background: url(../../images/close.svg);
+  border: none;
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  display: block;
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.popupCategory__close:hover {
+  border: 2px solid #3f1174;
+  border-radius: 50%;
+}
+
+.popupCategory__button {
+  position: relative;
+  margin: 20px;
+  padding: 0;
+  width: 40%;
+  align-self: center;
+  background-color: inherit;
+  border: 2px solid #3f1174;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, .1em .1em .2em #3b0a0a;
+}
+
+.popupCategory__button:active {
+  top: .1em;
+  left: .1em;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, .05) inset;
+}
+
+.popupCategory__button-img {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  margin: 5px;
+}
+
+.popupCategory__container-card {
+ /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+  justify-items: center;
+  gap: 32px 28px ;*/
+  margin: 0;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
