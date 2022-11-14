@@ -11,7 +11,7 @@ function Nav() {
           <Link to="/signup" className="nav__link">
             <p className="nav__link-text">Регистрация</p>
             </Link>
-          <Link to="#" className="nav__link">
+          <Link to="/signin" className="nav__link">
           <p className="nav__link-text">Войти</p>
           </Link>
         </div>

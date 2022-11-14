@@ -8,6 +8,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Word from "../Word/Word";
 import PopupCategory from "../PopupCategory/PopupCategory";
 import Register from "../Register/Register";
+import Login from "../Login/Login";
 
 function App() {
 
@@ -57,6 +58,12 @@ function App() {
           <Register 
           textButton="Зарегистрироваться"
           title="Регистрация"/>
+        </Route>
+
+        <Route path="/signin">
+          <Login 
+          textButton="Войти"
+          title="Вход"/>
         </Route>
 
       </Switch>

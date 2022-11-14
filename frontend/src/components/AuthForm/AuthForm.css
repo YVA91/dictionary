@@ -55,14 +55,13 @@
 }
 
 .authform__button_disabled {
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.25);
   color: rgba(0, 0, 0, 0.25);
   cursor: auto;
 }
 
 .authform__button_disabled:hover {
-  opacity: 1;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .authform__field {
@@ -144,7 +143,7 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  color: #8B8B8B;
+  color: #1b5533;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
