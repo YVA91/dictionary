@@ -1,0 +1,37 @@
+.formregister {
+  margin: 0 auto;
+  padding: 25px 0;
+  max-width: 358px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formregister__item {
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  font-family: 'Tucsonone', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  color: #836464;
+  
+}
+
+.formregister__item_link {
+  cursor: pointer;
+  text-decoration: none;
+  color: #4285F4;
+  transition: .5s;
+}
+
+.formregister__item_link:hover {
+  opacity: 0.6;
+}

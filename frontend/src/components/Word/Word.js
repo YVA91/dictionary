@@ -2,12 +2,13 @@ import './Word.css';
 import Category from '../Category/Category';
 import MainButton from '../MainButton/MainButton';
 
-function Word() {
+function Word({openPopupCategories}) {
 
   return (
 
     <section className="word">
-      <Category />
+      <Category 
+        openPopupCategories={openPopupCategories}/>
       <MainButton />
     </section>
 

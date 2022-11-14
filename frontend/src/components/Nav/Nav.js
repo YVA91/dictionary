@@ -8,7 +8,7 @@ function Nav() {
     <>
       <section className="nav">
         <div className="contanierUp">
-          <Link to="#" className="nav__link">
+          <Link to="/signup" className="nav__link">
             <p className="nav__link-text">Регистрация</p>
             </Link>
           <Link to="#" className="nav__link">

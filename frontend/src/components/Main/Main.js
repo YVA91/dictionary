@@ -7,10 +7,9 @@ function Main() {
 
   return (
     <>
-    <section className="main">
-    <h1 className="mainTitle">EasyWord</h1>
+    <main className="main">
     <Nav/>
-    </section>
+    </main>
     </>
   )
 }

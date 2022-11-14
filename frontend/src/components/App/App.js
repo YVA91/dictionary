@@ -6,28 +6,65 @@ import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 //import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Word from "../Word/Word";
-import PopupCategory from "../PopupCategory/PopupCategory"
+import PopupCategory from "../PopupCategory/PopupCategory";
+import Register from "../Register/Register";
 
 function App() {
-  const [isOpenMenu, setisOpenMenu] = useState(false);
+
+  const [isPopupCategory, setIsPopupCategory] = useState(false);
   const history = useHistory();
 
+  function openPopupCategories() {
+    setIsPopupCategory(true);
+  }
 
+  function closePopup() {
+    setIsPopupCategory(false);
+  }
+
+  useEffect(() => {
+    function closeByEscapeAndOverlay(evt) {
+      if (evt.key === 'Escape') {
+        closePopup();
+      }
+      if (evt.target.classList.contains('popupCategory')) {
+        closePopup()
+      }
+    }
+    if (isPopupCategory) {
+      document.addEventListener('keydown', closeByEscapeAndOverlay);
+      document.addEventListener("mousedown", closeByEscapeAndOverlay);
+      return () => {
+        document.removeEventListener('keydown', closeByEscapeAndOverlay);
+        document.removeEventListener("mousedown", closeByEscapeAndOverlay);
+      }
+    }
+  })
 
   return (
     <>
-    <Header/>
+      <Header />
       <Switch>
         <Route exact path="/">
           <Main />
         </Route>
-
         <Route exact path="/word">
-          <Word/>
+          <Word
+            openPopupCategories={openPopupCategories} />
         </Route>
+
+        <Route path="/signup">
+          <Register 
+          textButton="Зарегистрироваться"
+          title="Регистрация"/>
+        </Route>
+
       </Switch>
-      <PopupCategory/>
+      <PopupCategory
+        isPopupCategory={isPopupCategory}
+        closePopup={closePopup} />
     </>
+
   )
 }
 export default App;

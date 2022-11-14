@@ -2,12 +2,12 @@ import './Category.css';
 
 
 
-function Category() {
+function Category({openPopupCategories}) {
   
 
   return (
     <section className="category">
-      <button type="button" className="categor__button">..Выбрать категорию..</button>
+      <button type="button" className="categor__button" onClick={openPopupCategories}>..Выбрать категорию..</button>
     </section>
 
   )

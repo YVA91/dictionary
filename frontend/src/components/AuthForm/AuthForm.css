@@ -1,0 +1,154 @@
+.authform {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 396px;
+}
+
+@media screen and (max-width: 420px) {
+  .authform {
+    max-width: 260px;
+  }
+}
+
+.authform__button-contanier {
+  padding: 0;
+  margin:  0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.authform__button {
+  padding: 0;
+  margin: 0;
+  font-family: 'Tucsonone', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  color: #3f1174;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: .5s;
+  background-color: inherit;
+}
+
+.authform__button:hover {
+  font-size: 22px;
+  line-height: 25px;
+}
+
+@media screen and (max-width: 420px) {
+  .authform__button {
+    margin: 172px 0 14px 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.authform__button_disabled {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.25);
+  cursor: auto;
+}
+
+.authform__button_disabled:hover {
+  opacity: 1;
+}
+
+.authform__field {
+  display: block;
+  width: 100%;
+  margin: 0 0 24px 0;
+}
+
+.authform__field:last-of-type {
+  margin: 0 0 83px 0;
+}
+
+.authform__field-item {
+  padding: 7px 0 13px 0;
+  border: none;
+  outline: none;
+  font-family: 'Lobster', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 1px solid #424242;
+  background-color: inherit;
+  color: #4285F4;;
+}
+
+.authform__field-item:hover {
+  border-bottom: 1px solid #4285F4;
+}
+
+.authform__field-item:focus {
+  border-bottom: 1px solid #4285F4;
+}
+
+.authform__title {
+  margin: 0;
+  padding: 0 0 40px 0;
+  font-family: 'Tucsonone', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #3f1174;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+@media screen and (max-width: 420px) {
+  .authform__title {
+    padding: 0 0 80px 0;
+    text-align: center;
+  }
+}
+
+.authform__field-item-error {
+  margin: 6px 0 0 0;
+  padding: 0;
+  font-family: 'Tucsonone', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+.authform__field-signature {
+  margin: 0 0 5px 0;
+  padding: 0;
+  font-family: 'Tucsonone', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #8B8B8B;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}

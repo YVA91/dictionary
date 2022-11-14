@@ -1,4 +1,50 @@
 .cardCategory {
   border: 2px solid #3f1174;
   border-radius: 5px;
+  max-width: 200px;
+}
+
+.cardCategory__title {
+  font-family: 'Tucsonone', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  color: #3f1174;
+  text-align: center;
+  margin: 0px;
+  padding: 10px 20px;
+}
+
+.cardCategory__bitton-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px 10px 20px;
+}
+
+.cardCategory__bitton {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 30px;
+  height: 25px;
+}
+
+.cardCategory__bitton-img {
+  width: 25px;
+  height: 20px;
+  border-radius: 10px;
+  transition: .2s;
+}
+
+.cardCategory__bitton-img:hover {
+  border: 1px solid #3f1174;
 }
