@@ -5,7 +5,7 @@ const {
   getMyWordCollection,
   deleteWordCollection,
   deleteWord,
-  pushWord
+  pushWord,
 } = require('../controllers/word');
 
 router.get('/words', getMyWordCollection);

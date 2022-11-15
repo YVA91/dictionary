@@ -8,7 +8,6 @@ const report = (res) => {
 }
 
 export const register = (email, password, name) => {
-  console.log({email, password, name,})
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

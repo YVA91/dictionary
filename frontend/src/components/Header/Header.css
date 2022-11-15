@@ -37,6 +37,9 @@
   justify-content: space-around;
 }
 
+.header__title-link {
+  text-decoration: none;
+}
 @media screen and (max-width: 768px) {
   .header__title  {
     font-size: 56px;

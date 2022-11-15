@@ -17,10 +17,6 @@ function handleEdit () {
 }
 
 
-
-
-
-
   return (
     <section className={`popupCategory ${isPopupCategory && 'popupCategory_visible'}`}>
 
