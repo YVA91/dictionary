@@ -1,20 +1,38 @@
 import './PopupCategory.css';
 import add from '../../images/add.svg'
 import CardCategory from '../CardCategory/CardCategory'
+import * as MainApi from '../../utils/MainApi';
+import EditorCollection from '../EditorCollection/EditorCollection'
+
 
 
 import { useState, useEffect } from 'react';
 
 function PopupCategory({ isPopupCategory, closePopup }) {
-
   const [isAllCategory, setIsAllCategory] = useState(false);
-  const [AllCategory, setAllCategory] = useState(true);
+  const [AllCategory, setAllCategory] = useState(false);
+  const [allCollection, setAllCollection] = useState([]);
+  const [editorBlok, setEditorBlok] = useState(true);
 
 
-function handleEdit () {
-  setIsAllCategory(true);
-  setAllCategory(false);
-}
+  useEffect(() => {
+    MainApi.getWordCollecton()
+      .then((data) => {
+        setAllCollection(data)
+        console.log(data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [])
+
+
+
+
+  function handleEdit() {
+    setIsAllCategory(true);
+    setAllCategory(false);
+  }
 
 
   return (
@@ -26,10 +44,17 @@ function handleEdit () {
           <h1 className="popupCategory__title">Все категории</h1>
           <div className="popupCategory__title1">
             <div className="popupCategory__container-card">
-            <CardCategory
-                onEdit={handleEdit} />
-              <CardCategory
-                onEdit={handleEdit} />
+
+              {allCollection.map((collection) => {
+                return (
+                  <CardCategory
+                    onEdit={handleEdit}
+                    key={collection._id}
+                    collection={collection}
+                  />)
+              })
+              }
+
             </div>
           </div>
           <button className="popupCategory__button">
@@ -57,12 +82,22 @@ function handleEdit () {
 
             </div>
           </div>
-          <button className="popupCategory__button">
+          <button className="popupCategory__button" type="button">
             <img className="popupCategory__button-img" alt="добавить" src={add} />
           </button>
         </div>
       }
+
+
+      {editorBlok &&
+        <div className="popupCategory__container">
+          <EditorCollection />
+        </div>
+      }
+
     </section>
+
+
 
   )
 }

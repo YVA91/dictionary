@@ -1,0 +1,116 @@
+.editorCollection {
+  margin: 0;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.editorCollection__title-contanier {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.editorCollection__title {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #3f1174;
+}
+
+.editorCollection__title:hover {
+  border-bottom: 2px solid #4285F4;
+}
+
+
+.editorCollection__title:focus {
+  border: none;
+  border-bottom: 2px solid #4285F4;
+}
+
+
+.editorCollection__item-contanier {
+  margin: 5px 0 5px 0;
+  padding: 0;
+}
+
+.editorCollection__item {
+  margin: 5px 0 10px 0;
+  padding: 0;
+  list-style: none;
+
+}
+
+.editorCollection__item-input {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #3f1174;
+}
+
+.editorCollection__item-input:hover {
+  border-bottom: 2px solid #4285F4;
+}
+
+
+.editorCollection__item-input:focus {
+  border: none;
+  border-bottom: 2px solid #4285F4;
+}
+
+.editorCollection__button {
+  position: relative;
+  margin: 20px;
+  padding: 0;
+  width: 40%;
+  align-self: center;
+  background-color: inherit;
+  border: 2px solid #3f1174;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, .1em .1em .2em #3b0a0a;
+}
+
+.editorCollection__button:active {
+  top: .1em;
+  left: .1em;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, .05) inset;
+}
+
+.editorCollection__main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-Y: auto;
+}
+
+
+.editorCollection__eddButton-img {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-size: cover;
+  margin: 2px;
+  padding: 0;
+}
+
+.editorCollection__eddButton {
+  position: relative;
+  background-color: inherit;
+  border: 2px solid #3f1174;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, .1em .1em .2em #3b0a0a;
+  margin: 0 auto;
+}
+
+.editorCollection__eddButton:active {
+  top: .05em;
+  left: .05em;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, .05) inset;
+}

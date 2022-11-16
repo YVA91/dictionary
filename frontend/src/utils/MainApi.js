@@ -39,6 +39,23 @@ export const getUserInfo = () => {
     .then(report)
 };
 
+
+export const getWordCollecton = () => {
+  return fetch(`${BASE_URL}/words`, {
+    headers: {
+      "Content-Type": "application/json" 
+    },
+    credentials: "include",
+  })
+    .then(report)
+};
+
+
+
+
+
+
+
 export const patchUserInfo = (email, name) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'PATCH',

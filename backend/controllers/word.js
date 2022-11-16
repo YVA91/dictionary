@@ -57,7 +57,6 @@ module.exports.deleteWordCollection = async (req, res, next) => {
   }
 };
 
-
 module.exports.deleteWord = async (req, res, next) => {
   const Id = req.params.wordsId;
   const WId = req.params.wordId;
@@ -76,11 +75,10 @@ module.exports.deleteWord = async (req, res, next) => {
 
 module.exports.pushWord = async (req, res, next) => {
   const Id = req.params.wordId;
-  const { wordEn, wordRu
-  } = req.body;
+  const { wordEn, wordRu } = req.body;
   try {
     const WordId = await Words.findById(Id).updateOne({ $push: { "word": { wordEn, wordRu}}});
-    res.status(200).send({ WordId});
+    res.status(200).send({ WordId });
   } catch (err) {
     if (err.name === 'CastError') {
       next(new BadRequestError('Переданы некорректные данные'));

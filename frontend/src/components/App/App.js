@@ -77,9 +77,9 @@ function App() {
           setErrorServer('Что-то пошло не так')
         }
       })
-     /* .finally(() => {
-        setInputdisabled(true)
-      });*/
+    /* .finally(() => {
+      setInputdisabled(true)
+    });*/
   }
 
 
@@ -129,8 +129,8 @@ function App() {
   return (
     <>
       <CurrentUserContext.Provider value={currentUser} >
-        <Header 
-        onExit={handleExit}
+        <Header
+          onExit={handleExit}
         />
         <Switch>
           <Route exact path="/">
@@ -138,25 +138,25 @@ function App() {
           </Route>
           <Route exact path="/word">
             <Word
-              openPopupCategories={openPopupCategories}/>
+              openPopupCategories={openPopupCategories} />
           </Route>
 
           <Route path="/signup">
             <Register
               textButton="Зарегистрироваться"
-              title="Регистрация" 
+              title="Регистрация"
               errorServer={errorServer}
               onRegister={handleSubmitRegister}
-              />
+            />
           </Route>
 
           <Route path="/signin">
             <Login
               textButton="Войти"
-              title="Вход" 
+              title="Вход"
               errorServer={errorServer}
               onLogin={handleSubmitAuthorize}
-              />
+            />
           </Route>
 
         </Switch>

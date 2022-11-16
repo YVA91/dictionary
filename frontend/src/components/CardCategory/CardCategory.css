@@ -1,7 +1,7 @@
 .cardCategory {
   border: 2px solid #3f1174;
   border-radius: 5px;
-  max-width: 200px;
+  width: 200px;
 }
 
 .cardCategory__title {
