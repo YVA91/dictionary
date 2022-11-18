@@ -2,7 +2,14 @@ import './CardCategory.css';
 import deleteButton from '../../images/delete.svg';
 import editButton from '../../images/edit.svg';
 
-function CardCategory({onEdit, collection}) {
+function CardCategory({onEdit, collection,onDeleteCollection, setAllCollection }) {
+
+
+
+  function hadlyDeleteCollection () {
+    onDeleteCollection(collection._id)
+    setAllCollection((state) => state.filter((c) => c._id !== collection._id));
+  }
 
 
   return (
@@ -13,7 +20,7 @@ function CardCategory({onEdit, collection}) {
         <button type="button" className="cardCategory__bitton" >
           <img className="cardCategory__bitton-img" src={editButton} alt="редактировать" onClick={onEdit}/>
         </button>
-        <button type="button" className="cardCategory__bitton">
+        <button type="button" className="cardCategory__bitton" onClick={hadlyDeleteCollection}>
           <img className="cardCategory__bitton-img" src={deleteButton} alt="удалить"/>
         </button>
       </div>

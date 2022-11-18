@@ -40,7 +40,6 @@ function App() {
 
 
   function handleSubmitRegister(email, password, name) {
-    /* setInputdisabled(false)*/
     MainApi.register(email, password, name)
       .then((data) => {
         history.push('/word')
@@ -56,13 +55,9 @@ function App() {
           setErrorServer('Что-то пошло не так')
         }
       })
-    /* .finally(() => {
-        setInputdisabled(true)
-      });*/
   }
 
   function handleSubmitAuthorize(email, password) {
-    /*setInputdisabled(false)*/
     MainApi.authorize(email, password)
       .then((data) => {
         setCurrentUser(data)
@@ -77,9 +72,6 @@ function App() {
           setErrorServer('Что-то пошло не так')
         }
       })
-    /* .finally(() => {
-      setInputdisabled(true)
-    });*/
   }
 
 
@@ -93,9 +85,6 @@ function App() {
       .catch(err => console.log(err))
   }
 
-
-
-
   function openPopupCategories() {
     setIsPopupCategory(true);
   }
@@ -104,24 +93,29 @@ function App() {
     setIsPopupCategory(false);
   }
 
-  useEffect(() => {
-    function closeByEscapeAndOverlay(evt) {
-      if (evt.key === 'Escape') {
-        closePopup();
-      }
-      if (evt.target.classList.contains('popupCategory')) {
-        closePopup()
-      }
-    }
-    if (isPopupCategory) {
-      document.addEventListener('keydown', closeByEscapeAndOverlay);
-      document.addEventListener("mousedown", closeByEscapeAndOverlay);
-      return () => {
-        document.removeEventListener('keydown', closeByEscapeAndOverlay);
-        document.removeEventListener("mousedown", closeByEscapeAndOverlay);
-      }
-    }
-  })
+
+  function handleAddWordCollections(valueCollection, addItem) {
+    console.log(valueCollection, addItem)
+    MainApi.postWordCollection(valueCollection, addItem)
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+
+
+  function deleteWordCollection(collectionId) {
+    MainApi.deleteWordCollection(collectionId)
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
 
 
@@ -162,7 +156,11 @@ function App() {
         </Switch>
         <PopupCategory
           isPopupCategory={isPopupCategory}
-          closePopup={closePopup} />
+          closePopup={closePopup}
+          onSubmit={handleAddWordCollections}
+          setIsPopupCategory={setIsPopupCategory}
+          onDeleteCollection={deleteWordCollection}
+          />
       </CurrentUserContext.Provider>
     </>
 

@@ -1,53 +1,89 @@
 import './EditorCollection.css';
 import add from '../../images/add.svg'
-import MainButton from '../MainButton/MainButton'
+import deleteButton from '../../images/delete.svg';
+import { useState } from 'react';
 
-function EditorCollection() {
+function EditorCollection({onSubmit, closeEditorBlok}) {
 
+  const [addItem, setAddItem] = useState([{},])
 
-  function onAddLi() {
-    
+  const [valueCollection, setValueCollection] = useState('');
 
-
-    elem.append(tmpl.content.cloneNode(true));
+  const handleChange = (e, index) => {
+    const { name, value } = e.target;
+    const items = [...addItem];
+    items[index][name] = value;
+    setAddItem(items)
   }
 
+  const onAddLi = () => {
+    setAddItem([...addItem, {}])
+  }
+
+  const RemoveItem = (index) => {
+    const items = [...addItem];
+    items.splice(index, 1);
+    setAddItem(items)
+  }
+
+  const handleChangeItem = (event) => {
+    const value = event.target.value;
+    setValueCollection(value)
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit(valueCollection, addItem);
+    closeEditorBlok()
+  }
 
   return (
 
-
-
-
-
-    <form className="editorCollection">
+    <form className="editorCollection" onSubmit={handleSubmit}>
       <label className="editorCollection__title-contanier">
-        <input className="editorCollection__title"></input>
+        <input className="editorCollection__title"
+          name="item"
+          value={valueCollection || ''}
+          onChange={handleChangeItem}
+        ></input>
       </label>
       <div className="editorCollection__main">
         <ul className="editorCollection__item-contanier">
 
-          <template id="item">
-            <li className="editorCollection__item">
-              <input className="editorCollection__item-input"></input>
-              <span> &minus; </span>
-              <input className="editorCollection__item-input"></input>
-            </li>
-          </template>
+          {addItem.map((item, index) => (
+            <li key={index} className="editorCollection__item">
+              <input
+                className="editorCollection__item-input"
+                name="wordEn"
+                value={item.wordEn || ''}
+                onChange={(e) => handleChange(e, index)}
+              >
 
-          <li className="editorCollection__item">
-            <input className="editorCollection__item-input"></input>
-            <span> &minus; </span>
-            <input className="editorCollection__item-input"></input>
-          </li>
+              </input>
+              <span> &minus; </span>
+              <input
+                className="editorCollection__item-input"
+                name="wordRu"
+                value={item.wordRu || ''}
+                onChange={(e) => handleChange(e, index)}
+
+              ></input>
+              <button className={`editorCollection__itemButtonRemove ${addItem.length === 1 && 'editorCollection__itemButtonRemove_visibility'}`} type="button" onClick={() => RemoveItem(index)}>
+                <img src={deleteButton} className="editorCollection__itemButtonRemoveImg" />
+              </button>
+            </li>
+          ))}
+
         </ul>
         <button className="editorCollection__eddButton" type="button" onClick={onAddLi}>
           <img src={add} alt="Добавить" className="editorCollection__eddButton-img" />
         </button>
 
       </div>
-      <button className="editorCollection__button" type="button">
+      <button className="editorCollection__button" type="submit">
         Сохранить
       </button>
+
 
 
     </form>

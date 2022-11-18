@@ -50,6 +50,46 @@ export const getWordCollecton = () => {
     .then(report)
 };
 
+export const  postWordCollection = (valueCollection, addIteme) => {
+  return fetch(`${BASE_URL}/words`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: "include",
+    body: JSON.stringify({
+    name: valueCollection, 
+    word: [...addIteme],
+    })
+  })
+    .then(report)
+}
+
+export const  deleteWordCollection = (collectionId) => {
+  return fetch(`${BASE_URL}/words/${collectionId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: "include",
+  })
+    .then(report)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -82,7 +122,7 @@ export const getExit = () => {
     .then(report)
 }
 
-export const  postSaveMovie = (movie) => {
+export const  postЦ = (movie) => {
   return fetch(`${BASE_URL}/movies`, {
     method: 'POST',
     headers: {
