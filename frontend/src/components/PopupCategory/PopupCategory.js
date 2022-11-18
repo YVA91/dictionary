@@ -13,6 +13,7 @@ function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCatego
   const [isAllCategory, setIsAllCategory] = useState(true);
   const [allCollection, setAllCollection] = useState([]);
   const [editorBlok, setEditorBlok] = useState(false);
+  const [isChangeCategory, setIsChangeCategory] = useState({});
 
 
   useEffect(() => {
@@ -64,6 +65,20 @@ function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCatego
 
 
 
+  function openEditWord(collection) {
+    setChangeCategory(true)
+    setIsAllCategory(false)
+    setIsChangeCategory(collection)
+  }
+
+  function closeChangeCategory() {
+    setIsAllCategory(true)
+    setChangeCategory(false)
+    setIsChangeCategory('')
+  }
+
+
+
 
 
 
@@ -86,6 +101,7 @@ function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCatego
                     collection={collection}
                     onDeleteCollection={onDeleteCollection}
                     setAllCollection={setAllCollection}
+                    onOpenEditWord={openEditWord}
                   />)
               })
               }
@@ -104,17 +120,23 @@ function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCatego
           <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closeEditorBlok}></button>
           <EditorCollection
             onSubmit={onSubmit}
-            closeEditorBlok={closeEditorBlok} />
+            closeEditorBlok={closeEditorBlok}
+            editorBlok={editorBlok} 
+            isChangeCategory={isChangeCategory}
+            />
         </div>
       }
 
 
       {changeCategory &&
         <div className="popupCategory__container">
-          <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closeEditorBlok}></button>
+          <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closeChangeCategory}></button>
           <EditorCollection
-            onSubmit={onSubmit}
-            closeEditorBlok={closeEditorBlok} />
+          isChangeCategory={isChangeCategory}
+          changeCategory={changeCategory}
+            
+            
+            />
         </div>
       }
 
