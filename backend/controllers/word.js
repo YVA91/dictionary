@@ -57,6 +57,21 @@ module.exports.deleteWordCollection = async (req, res, next) => {
   }
 };
 
+module.exports.updateWordCollection = async (req, res) => {
+  try {
+    const Id = req.params.wordId;
+    const users = await Words.findByIdAndUpdate(Id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).send(users);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+/*
 module.exports.deleteWord = async (req, res, next) => {
   const Id = req.params.wordsId;
   const WId = req.params.wordId;
@@ -86,4 +101,4 @@ module.exports.pushWord = async (req, res, next) => {
       next(err);
     }
   }
-};
+};*/

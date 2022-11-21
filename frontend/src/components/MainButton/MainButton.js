@@ -1,12 +1,17 @@
 import './MainButton.css';
 
-function MainButton() {
+function MainButton({openMainPopup}) {
   
+function Start() {
+  openMainPopup()
+}
+
+
 
   return (
     
     <section className="mainButton">
-      <button type="button" className="mainButton__button">Start</button>
+      <button type="button" className="mainButton__button" onClick={Start}>Start</button>
     </section>
   
   )

@@ -12,27 +12,27 @@ export const register = (email, password, name) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: "include",
-    body: JSON.stringify({email, password, name,})
+    body: JSON.stringify({ email, password, name, })
   })
-  .then(report)
+    .then(report)
 };
 
 export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
-      "Content-Type": "application/json" 
+      "Content-Type": "application/json"
     },
     credentials: "include",
-    body: JSON.stringify({email, password})
+    body: JSON.stringify({ email, password })
   })
     .then(report)
-}; 
+};
 
 export const getUserInfo = () => {
   return fetch(`${BASE_URL}/users/me`, {
     headers: {
-      "Content-Type": "application/json" 
+      "Content-Type": "application/json"
     },
     credentials: "include",
   })
@@ -43,14 +43,14 @@ export const getUserInfo = () => {
 export const getWordCollecton = () => {
   return fetch(`${BASE_URL}/words`, {
     headers: {
-      "Content-Type": "application/json" 
+      "Content-Type": "application/json"
     },
     credentials: "include",
   })
     .then(report)
 };
 
-export const  postWordCollection = (valueCollection, addIteme) => {
+export const postWordCollection = (valueCollection, addIteme) => {
   return fetch(`${BASE_URL}/words`, {
     method: 'POST',
     headers: {
@@ -58,14 +58,14 @@ export const  postWordCollection = (valueCollection, addIteme) => {
     },
     credentials: "include",
     body: JSON.stringify({
-    name: valueCollection, 
-    word: [...addIteme],
+      name: valueCollection,
+      word: [...addIteme],
     })
   })
     .then(report)
 }
 
-export const  deleteWordCollection = (collectionId) => {
+export const deleteWordCollection = (collectionId) => {
   return fetch(`${BASE_URL}/words/${collectionId}`, {
     method: 'DELETE',
     headers: {
@@ -76,40 +76,26 @@ export const  deleteWordCollection = (collectionId) => {
     .then(report)
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const patchUserInfo = (email, name) => {
-  return fetch(`${BASE_URL}/users/me`, {
+export const patchCollection = (wordId, nameCollection, patchCollection) => {
+  return fetch(`${BASE_URL}/word/${wordId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },
     credentials: "include",
     body: JSON.stringify({
-      email: email,
-      name: name
+      name: nameCollection,
+      word: [...patchCollection],
     })
   })
     .then(report)
 }
+
+
+
+
+
+
 
 export const getExit = () => {
   return fetch(`${BASE_URL}/signout`, {
@@ -122,7 +108,7 @@ export const getExit = () => {
     .then(report)
 }
 
-export const  postЦ = (movie) => {
+export const postЦ = (movie) => {
   return fetch(`${BASE_URL}/movies`, {
     method: 'POST',
     headers: {
@@ -130,17 +116,17 @@ export const  postЦ = (movie) => {
     },
     credentials: "include",
     body: JSON.stringify({
-    country: movie.country,
-    director: movie.director,
-    duration: movie.duration, 
-    year: movie.year,
-    description: movie.description,
-    image: ( `https://api.nomoreparties.co${movie.image.url}`),
-    trailerLink: movie.trailerLink,
-    thumbnail: ( `https://api.nomoreparties.co${movie.image.url}`),
-    movieId: movie.id,
-    nameRU: movie.nameRU, 
-    nameEN: movie.nameEN,
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image: (`https://api.nomoreparties.co${movie.image.url}`),
+      trailerLink: movie.trailerLink,
+      thumbnail: (`https://api.nomoreparties.co${movie.image.url}`),
+      movieId: movie.id,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN,
     })
   })
     .then(report)
@@ -149,14 +135,14 @@ export const  postЦ = (movie) => {
 export const getSaveMovies = () => {
   return fetch(`${BASE_URL}/movies`, {
     headers: {
-      "Content-Type": "application/json" 
+      "Content-Type": "application/json"
     },
     credentials: "include",
   })
     .then(report)
 };
 
-export const  deleteMovie = (movieId) => {
+export const deleteMovie = (movieId) => {
   return fetch(`${BASE_URL}/movies/${movieId}`, {
     method: 'DELETE',
     headers: {

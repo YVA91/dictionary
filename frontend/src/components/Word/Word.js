@@ -1,15 +1,20 @@
 import './Word.css';
 import Category from '../Category/Category';
 import MainButton from '../MainButton/MainButton';
+import { useState, useEffect } from 'react';
 
-function Word({openPopupCategories}) {
+function Word({openPopupCategories, openMainPopup}) {
+  
+  
+
 
   return (
 
     <section className="word">
       <Category 
         openPopupCategories={openPopupCategories}/>
-      <MainButton />
+      <MainButton 
+      openMainPopup={openMainPopup}/>
     </section>
 
   )

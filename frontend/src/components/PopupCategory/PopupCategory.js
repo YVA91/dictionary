@@ -8,13 +8,14 @@ import EditorCollection from '../EditorCollection/EditorCollection'
 
 import { useState, useEffect } from 'react';
 
-function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCategory, onDeleteCollection }) {
+function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCategory, onDeleteCollection, onSubmitPatchCollection }) {
   const [changeCategory, setChangeCategory] = useState(false);
   const [isAllCategory, setIsAllCategory] = useState(true);
   const [allCollection, setAllCollection] = useState([]);
   const [editorBlok, setEditorBlok] = useState(false);
   const [isChangeCategory, setIsChangeCategory] = useState({});
 
+ 
 
   useEffect(() => {
     MainApi.getWordCollecton()
@@ -50,6 +51,7 @@ function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCatego
   function closePopup() {
     setIsPopupCategory(false);
     setTimeout(closeEditorBlok, 500);
+    setTimeout(closeChangeCategory, 500);
   }
 
 
@@ -79,11 +81,6 @@ function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCatego
 
 
 
-
-
-
-
-
   return (
     <section className={`popupCategory ${isPopupCategory && 'popupCategory_visible'}`}>
 
@@ -102,6 +99,7 @@ function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCatego
                     onDeleteCollection={onDeleteCollection}
                     setAllCollection={setAllCollection}
                     onOpenEditWord={openEditWord}
+                    closePopup={closePopup}
                   />)
               })
               }
@@ -134,6 +132,8 @@ function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCatego
           <EditorCollection
           isChangeCategory={isChangeCategory}
           changeCategory={changeCategory}
+          closeChangeCategory={closeChangeCategory}
+          onSubmitPatchCollection={onSubmitPatchCollection}
             
             
             />

@@ -4,12 +4,13 @@ import Header from "../Header/Header";
 import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-//import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Word from "../Word/Word";
 import PopupCategory from "../PopupCategory/PopupCategory";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import * as MainApi from '../../utils/MainApi';
+import MainPopup from "../MainPopup/MainPopup";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState({});
   const [errorServer, setErrorServer] = useState('');
+  const [isMainPopup, setIsMainPopup] = useState(false);
 
 
   useEffect(() => {
@@ -26,6 +28,7 @@ function App() {
       .then((data) => {
         setCurrentUser(data)
         setLoggedIn(true)
+        history.push('/word')
       })
       .catch((err) => {
         console.log(err);
@@ -81,6 +84,7 @@ function App() {
         history.push('/')
         setLoggedIn(false)
         setCurrentUser({})
+        localStorage.removeItem('collection')
       })
       .catch(err => console.log(err))
   }
@@ -119,6 +123,22 @@ function App() {
 
 
 
+  function handlePatchCollection(wordId, nameCollection, patchCollection) {
+    MainApi.patchCollection(wordId, nameCollection, patchCollection)
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  function openMainPopup() {
+    setIsMainPopup(true)
+  }
+
+
+
 
   return (
     <>
@@ -130,28 +150,41 @@ function App() {
           <Route exact path="/">
             <Main />
           </Route>
-          <Route exact path="/word">
-            <Word
-              openPopupCategories={openPopupCategories} />
-          </Route>
+
+          <Route
+            exact path="/word"
+            children={
+              <ProtectedRoute loggedIn={loggedIn}>
+                <Word
+                  openPopupCategories={openPopupCategories}
+                  openMainPopup={openMainPopup}
+                />
+              </ProtectedRoute>
+            }
+          />
 
           <Route path="/signup">
-            <Register
-              textButton="Зарегистрироваться"
-              title="Регистрация"
-              errorServer={errorServer}
-              onRegister={handleSubmitRegister}
-            />
-          </Route>
+            {!loggedIn ? (
+              <Register
+                textButton="Зарегистрироваться"
+                title="Регистрация"
+                errorServer={errorServer}
+                onRegister={handleSubmitRegister}
+              />) : (<Redirect to="/word" />)
+            } </Route>
 
           <Route path="/signin">
-            <Login
-              textButton="Войти"
-              title="Вход"
-              errorServer={errorServer}
-              onLogin={handleSubmitAuthorize}
-            />
-          </Route>
+            {!loggedIn ? (
+              <Login
+                textButton="Войти"
+                title="Вход"
+                errorServer={errorServer}
+                onLogin={handleSubmitAuthorize}
+              />
+            ) : (<Redirect to="/word" />)
+            } </Route>
+
+
 
         </Switch>
         <PopupCategory
@@ -160,10 +193,17 @@ function App() {
           onSubmit={handleAddWordCollections}
           setIsPopupCategory={setIsPopupCategory}
           onDeleteCollection={deleteWordCollection}
-          />
+          onSubmitPatchCollection={handlePatchCollection}
+        />
+
+        <MainPopup
+          isMainPopup={isMainPopup} />
+
       </CurrentUserContext.Provider>
     </>
 
   )
 }
 export default App;
+
+

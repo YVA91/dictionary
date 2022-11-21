@@ -4,14 +4,12 @@ const {
   createWordCollection,
   getMyWordCollection,
   deleteWordCollection,
-  deleteWord,
-  pushWord,
+  updateWordCollection,
 } = require('../controllers/word');
 
 router.get('/words', getMyWordCollection);
 router.post('/words', createWordCollection);
 router.delete('/words/:wordId', deleteWordCollection);
-router.delete('/word/:wordsId/:wordId', deleteWord);
-router.patch('/word/:wordId', pushWord);
+router.patch('/word/:wordId', updateWordCollection);
 
 module.exports = router;

@@ -17,9 +17,15 @@
   text-rendering: optimizeLegibility;
   color: #3f1174;
   text-align: center;
-  margin: 0px;
+  margin: 0;
   padding: 10px 20px;
+  background-color: inherit;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border-bottom: 1px solid #3f1174;
 }
+
 
 .cardCategory__bitton-container {
   display: flex;
@@ -48,3 +54,4 @@
 .cardCategory__bitton-img:hover {
   border: 1px solid #3f1174;
 }
+

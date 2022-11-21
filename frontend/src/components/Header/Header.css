@@ -72,7 +72,6 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   transition: .05s;
-  
 }
 
 .header__button:hover {
@@ -85,4 +84,21 @@
   background-color: #f7e097;
   border-radius: 20px;
   
+}
+
+.header__profile-name {
+  padding: 0;
+  margin: 20px 0;
+  color: #3f1174;
+  font-family: 'Lobster', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 22px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+
 }

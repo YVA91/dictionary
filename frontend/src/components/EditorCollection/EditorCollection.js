@@ -3,12 +3,12 @@ import add from '../../images/add.svg'
 import deleteButton from '../../images/delete.svg';
 import { useState } from 'react';
 
-function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCategory, changeCategory }) {
+function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCategory, changeCategory, closeChangeCategory, onSubmitPatchCollection}) {
 
   const [addItem, setAddItem] = useState([{}])
   const [addItemCollection, setAddItemCollection] = useState(isChangeCategory.word)
-  console.log(addItemCollection)
-
+  
+  
   const [valueCollection, setValueCollection] = useState(isChangeCategory.name);
 
   const handleChange = (e, index) => {
@@ -17,6 +17,7 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
     items[index][name] = value;
     setAddItem(items)
   }
+
 
   const onAddLi = () => {
     setAddItem([...addItem, {}])
@@ -33,6 +34,17 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
     setValueCollection(value)
   };
 
+
+  const handleChangeWord = (e, index) => {
+    const {name, value } = e.target;
+    const items = [...addItemCollection];
+    items[index][name] = value;
+    setAddItemCollection(items)
+  };
+
+
+
+
   function handleSubmit(e) {
     e.preventDefault();
     onSubmit(valueCollection, addItem);
@@ -45,6 +57,17 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
     setAddItemCollection([...addItemCollection, {}])
   }
 
+  const RemoveItemCollection = (index) => {
+    const items = [...addItemCollection];
+    items.splice(index, 1);
+    setAddItemCollection(items)
+  }
+
+  function handleSubmitPatchCollection(e) {
+    e.preventDefault();
+    onSubmitPatchCollection(isChangeCategory._id, valueCollection, addItemCollection);
+    closeChangeCategory()
+  }
 
 
 
@@ -105,7 +128,7 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
 
 
       {changeCategory &&
-        <form className="editorCollection" onSubmit={handleSubmit}>
+        <form className="editorCollection" onSubmit={handleSubmitPatchCollection}>
           <label className="editorCollection__title-contanier">
             <input className="editorCollection__title"
               name="item"
@@ -116,13 +139,13 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
           <div className="editorCollection__main">
             <ul className="editorCollection__item-contanier">
 
-              {isChangeCategory.word.map((item, index) => (
+              {addItemCollection.map((item, index) => (
                 <li key={index} className="editorCollection__item">
                   <input
                     className="editorCollection__item-input"
                     name="wordEn"
                     value={item.wordEn || ''}
-                    onChange={(e) => handleChange(e, index)}
+                    onChange={(e) => handleChangeWord(e, index)}
                   >
 
                   </input>
@@ -131,10 +154,10 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
                     className="editorCollection__item-input"
                     name="wordRu"
                     value={item.wordRu || ''}
-                    onChange={(e) => handleChange(e, index)}
+                    onChange={(e) => handleChangeWord(e, index)}
 
                   ></input>
-                  <button className="editorCollection__itemButtonRemove" type="button" onClick={() => RemoveItem(index)}>
+                  <button className="editorCollection__itemButtonRemove" type="button" onClick={() => RemoveItemCollection(index)}>
                     <img src={deleteButton} className="editorCollection__itemButtonRemoveImg" />
                   </button>
                 </li>

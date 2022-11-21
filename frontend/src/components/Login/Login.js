@@ -24,6 +24,7 @@ function Login({ title, textButton, onLogin, errorServer}) {
         passwordValue={values.password}
         error={errors}
         isValid={isValid}
+        errorServer={errorServer}
       />
       <div className='formregister'>
         <p className='formregister__item'>Ещё не зарегистрированы?&nbsp;
