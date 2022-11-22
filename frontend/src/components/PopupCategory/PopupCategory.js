@@ -8,7 +8,7 @@ import EditorCollection from '../EditorCollection/EditorCollection'
 
 import { useState, useEffect } from 'react';
 
-function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCategory, onDeleteCollection, onSubmitPatchCollection }) {
+function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onDeleteCollection, onSubmitPatchCollection }) {
   const [changeCategory, setChangeCategory] = useState(false);
   const [isAllCategory, setIsAllCategory] = useState(true);
   const [allCollection, setAllCollection] = useState([]);
@@ -27,26 +27,6 @@ function PopupCategory({ isPopupCategory, closePopup, onSubmit, setIsPopupCatego
         console.log(err);
       })
   }, [isAllCategory, isPopupCategory])
-
-
-  useEffect(() => {
-    function closeByEscapeAndOverlay(evt) {
-      if (evt.key === 'Escape') {
-        closePopup();
-      }
-      if (evt.target.classList.contains('popupCategory')) {
-        closePopup()
-      }
-    }
-    if (isPopupCategory) {
-      document.addEventListener('keydown', closeByEscapeAndOverlay);
-      document.addEventListener("mousedown", closeByEscapeAndOverlay);
-      return () => {
-        document.removeEventListener('keydown', closeByEscapeAndOverlay);
-        document.removeEventListener("mousedown", closeByEscapeAndOverlay);
-      }
-    }
-  })
 
   function closePopup() {
     setIsPopupCategory(false);

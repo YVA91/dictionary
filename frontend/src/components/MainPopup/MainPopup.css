@@ -14,7 +14,7 @@
   left: 0%;
 }
 
-.mainPopup {
+.mainPopup_visible {
   visibility: visible;
   opacity: 1;
 }
@@ -22,7 +22,7 @@
 .mainPopup__container {
   margin: 0 50px;
   width: 1280px;
-  height: 70%;
+
   border-radius: 10px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   background-color: #fff;
@@ -48,7 +48,7 @@
   color: #3f1174;
   text-align: center;
   margin: 0;
-  padding: 20px;
+  padding: 40px 0 20px 0;
 }
 
 .mainPopup__close {
@@ -70,85 +70,63 @@
   border-radius: 50%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.dictionary {
+.mainPopup__blok-container {
   margin: 0;
-  /*display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;*/
+  padding: 70px 0;
 }
 
-.dictionary__blok {
-  overflow:hidden;
+.mainPopup_battom-container {
+  display: flex;
+  padding: 0 0 70px 0;
+  margin: 0;
+}
+
+.mainPopup__blok {
+  overflow: hidden;
   display: inline-block;
-  background-color:indianred;
+  background-color: indianred;
   border: 3px solid rebeccapurple;
   border-radius: 10px;
   margin: 0 40px;
 }
 
-.dictionary__blok_translation {
-  background-color:forestgreen
+.mainPopup__blok_translation {
+  background-color: #228b22
 }
 
-.dictionary__title {
+.mainPopup__title {
   margin: 0 auto;
   padding: 20px;
   font-family: 'Abril Fatface', cursive;
 }
 
-.dictionary__title_visibility {
-text-shadow: 0 0 15px #999;
-color: transparent;
+.mainPopup__title_visibility {
+  text-shadow: 0 0 15px #999;
+  color: transparent;
 }
 
-.dictionary__battom {
+.mainPopup__battom {
   position: relative;
-  background-color:cornflowerblue;
+  background-color: cornflowerblue;
   border: 3px solid rebeccapurple;
   border-radius: 50%;
   margin: 30px 30px;
-  box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #800;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, .1em .1em .2em #800;
+  cursor: pointer;
 }
 
-.dictionary__battom:active {
+.mainPopup__battom:active {
   top: .1em;
   left: .1em;
-  box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, .05) inset;
 }
 
-
-.dictionary__battom-text {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  text-align: center;
-  cursor: pointer;
-  color:rgb(24, 240, 24);
-  font-size: 42px;
-  line-height: 48px;
+.mainPopup__battom-img {
+  weight: 30px;
+  height: 30px;
+  padding: 10px
 }
 
-.dictionary_battom-container {
+.mainPopup_battom-container {
   display: flex;
-}
-
-.dictionary__battom-text_no {
-  color:crimson;
 }

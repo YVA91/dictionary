@@ -42,6 +42,44 @@ function App() {
   }, [history]);
 
 
+
+
+  useEffect(() => {
+    function closeByEscapeAndOverlay(evt) {
+      if (evt.key === 'Escape') {
+        closePopup()
+      }
+      if (evt.target.classList.contains('popupCategory' && 'mainPopup'  )) {
+        closePopup()
+
+      }
+    }
+    if (isPopupCategory || isMainPopup) {
+      document.addEventListener('keydown', closeByEscapeAndOverlay);
+      document.addEventListener("mousedown", closeByEscapeAndOverlay);
+      return () => {
+        document.removeEventListener('keydown', closeByEscapeAndOverlay);
+        document.removeEventListener("mousedown", closeByEscapeAndOverlay);
+      }
+    }
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   function handleSubmitRegister(email, password, name) {
     MainApi.register(email, password, name)
       .then((data) => {
@@ -94,7 +132,8 @@ function App() {
   }
 
   function closePopup() {
-    setIsPopupCategory(false);
+    setIsPopupCategory(false)
+    setIsMainPopup(false);
   }
 
 
@@ -136,9 +175,6 @@ function App() {
   function openMainPopup() {
     setIsMainPopup(true)
   }
-
-
-
 
   return (
     <>
@@ -189,7 +225,6 @@ function App() {
         </Switch>
         <PopupCategory
           isPopupCategory={isPopupCategory}
-          closePopup={closePopup}
           onSubmit={handleAddWordCollections}
           setIsPopupCategory={setIsPopupCategory}
           onDeleteCollection={deleteWordCollection}
@@ -197,7 +232,9 @@ function App() {
         />
 
         <MainPopup
-          isMainPopup={isMainPopup} />
+          isMainPopup={isMainPopup} 
+          closeMainPopup={closePopup}
+          />
 
       </CurrentUserContext.Provider>
     </>
