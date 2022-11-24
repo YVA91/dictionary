@@ -55,6 +55,13 @@
   border-bottom: 2px solid #4285F4;
 }
 
+.editorCollection__title::placeholder {
+  opacity: .3;
+}
+
+.editorCollection__item-input::placeholder {
+  opacity: .3;
+}
 
 .editorCollection__item-contanier {
   margin: 5px 0 5px 0;

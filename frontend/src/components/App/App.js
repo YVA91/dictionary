@@ -160,6 +160,7 @@ function App() {
     MainApi.deleteWordCollection(collectionId)
       .then((data) => {
         console.log(data)
+       /* setFilterSaveMovies((state) => state.filter((c) => c._id !== movie._id));*/
       })
       .catch((err) => {
         console.log(err)

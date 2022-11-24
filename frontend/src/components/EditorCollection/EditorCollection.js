@@ -81,6 +81,8 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
               name="item"
               value={valueCollection || ''}
               onChange={handleChangeItem}
+              placeholder="Название коллекции"
+              required
             ></input>
           </label>
           <div className="editorCollection__main">
@@ -94,6 +96,7 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
                     value={item.wordEn || ''}
                     onChange={(e) => handleChange(e, index)}
                     required
+                    placeholder="Слово"
                   >
 
                   </input>
@@ -104,6 +107,7 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
                     value={item.wordRu || ''}
                     onChange={(e) => handleChange(e, index)}
                     required
+                    placeholder="Перевод"
                   ></input>
                   <button className={`editorCollection__itemButtonRemove ${addItem.length === 1 && 'editorCollection__itemButtonRemove_visibility'}`} type="button" onClick={() => RemoveItem(index)}>
                     <img src={deleteButton} className="editorCollection__itemButtonRemoveImg" />
@@ -123,11 +127,6 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
         </form>
       }
 
-
-
-
-
-
       {changeCategory &&
         <form className="editorCollection" onSubmit={handleSubmitPatchCollection}>
           <label className="editorCollection__title-contanier">
@@ -135,6 +134,8 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
               name="item"
               value={valueCollection || ''}
               onChange={handleChangeItem}
+              required
+              placeholder="Название коллекции"
             ></input>
           </label>
           <div className="editorCollection__main">
@@ -148,6 +149,7 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
                     value={item.wordEn || ''}
                     onChange={(e) => handleChangeWord(e, index)}
                     required
+                    placeholder="Слово"
                   >
 
                   </input>
@@ -158,7 +160,7 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
                     value={item.wordRu || ''}
                     onChange={(e) => handleChangeWord(e, index)}
                     required
-
+                    placeholder="Перевод"
                   ></input>
                   <button className="editorCollection__itemButtonRemove" type="button" onClick={() => RemoveItemCollection(index)}>
                     <img src={deleteButton} className="editorCollection__itemButtonRemoveImg" />
