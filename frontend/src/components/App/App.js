@@ -11,6 +11,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import * as MainApi from '../../utils/MainApi';
 import MainPopup from "../MainPopup/MainPopup";
+import Footer from '../Footer/Footer';
 
 
 function App() {
@@ -21,6 +22,11 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [errorServer, setErrorServer] = useState('');
   const [isMainPopup, setIsMainPopup] = useState(false);
+  const [isWord, setIsWord] = useState('')
+  const [mainTitle, setMainTitle] = useState('')
+
+
+
 
 
   useEffect(() => {
@@ -49,7 +55,7 @@ function App() {
       if (evt.key === 'Escape') {
         closePopup()
       }
-      if (evt.target.classList.contains('popupCategory' && 'mainPopup'  )) {
+      if (evt.target.classList.contains('popupCategory' && 'mainPopup')) {
         closePopup()
 
       }
@@ -166,6 +172,7 @@ function App() {
     MainApi.patchCollection(wordId, nameCollection, patchCollection)
       .then((data) => {
         console.log(data)
+        localStorage.setItem('collection', JSON.stringify(data))
       })
       .catch((err) => {
         console.log(err)
@@ -174,6 +181,8 @@ function App() {
 
   function openMainPopup() {
     setIsMainPopup(true)
+    setIsWord(JSON.parse(localStorage.getItem('collection')).word[Math.floor(Math.random() * JSON.parse(localStorage.getItem('collection')).word.length)])
+    setMainTitle(JSON.parse(localStorage.getItem('collection')))
   }
 
   return (
@@ -232,11 +241,15 @@ function App() {
         />
 
         <MainPopup
-          isMainPopup={isMainPopup} 
+          isMainPopup={isMainPopup}
           closeMainPopup={closePopup}
-          />
+          isWord={isWord}
+          mainTitle={mainTitle}
+          setIsWord={setIsWord}
+        />
 
       </CurrentUserContext.Provider>
+      <Footer />
     </>
 
   )

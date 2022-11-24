@@ -55,3 +55,12 @@
   border: 1px solid #3f1174;
 }
 
+
+@media screen and (max-width: 420px) {
+
+  .cardCategory__title {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+}

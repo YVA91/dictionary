@@ -14,7 +14,7 @@
   font-family: 'Tucsonone', Arial, sans-serif;
   font-weight: 400;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
@@ -22,7 +22,6 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   color: #836464;
-  
 }
 
 .formregister__item_link {
@@ -34,4 +33,13 @@
 
 .formregister__item_link:hover {
   opacity: 0.6;
+}
+
+
+
+@media screen and (max-width: 768px) {
+ 
+
+
+
 }

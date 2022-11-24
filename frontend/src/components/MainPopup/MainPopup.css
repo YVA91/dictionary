@@ -127,6 +127,26 @@
   padding: 10px
 }
 
-.mainPopup_battom-container {
-  display: flex;
+
+@media screen and (max-width: 420px) {
+  .mainPopup__close {
+    width: 15px;
+    height: 15px;
+    top: -25px;
+    right: 0px;
+  }
+
+  .mainPopup__blok-container {
+    padding: 35px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+  }
+
+  .mainPopup_battom-container {
+    padding: 0 0 35px 0;
+
+  }
+  
 }
+

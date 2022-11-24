@@ -39,4 +39,8 @@
     font-size: 32px;
     line-height: 36px;
   }
+
+  .main {
+    padding: 20px 0;
+  }
 }

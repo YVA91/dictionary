@@ -3,12 +3,12 @@ import add from '../../images/add.svg'
 import deleteButton from '../../images/delete.svg';
 import { useState } from 'react';
 
-function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCategory, changeCategory, closeChangeCategory, onSubmitPatchCollection}) {
+function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCategory, changeCategory, closeChangeCategory, onSubmitPatchCollection }) {
 
   const [addItem, setAddItem] = useState([{}])
   const [addItemCollection, setAddItemCollection] = useState(isChangeCategory.word)
-  
-  
+
+
   const [valueCollection, setValueCollection] = useState(isChangeCategory.name);
 
   const handleChange = (e, index) => {
@@ -36,7 +36,7 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
 
 
   const handleChangeWord = (e, index) => {
-    const {name, value } = e.target;
+    const { name, value } = e.target;
     const items = [...addItemCollection];
     items[index][name] = value;
     setAddItemCollection(items)
@@ -93,16 +93,17 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
                     name="wordEn"
                     value={item.wordEn || ''}
                     onChange={(e) => handleChange(e, index)}
+                    required
                   >
 
                   </input>
-                  <span> &minus; </span>
+                  <span className="editorCollection__item-span"> &minus; </span>
                   <input
                     className="editorCollection__item-input"
                     name="wordRu"
                     value={item.wordRu || ''}
                     onChange={(e) => handleChange(e, index)}
-
+                    required
                   ></input>
                   <button className={`editorCollection__itemButtonRemove ${addItem.length === 1 && 'editorCollection__itemButtonRemove_visibility'}`} type="button" onClick={() => RemoveItem(index)}>
                     <img src={deleteButton} className="editorCollection__itemButtonRemoveImg" />
@@ -146,15 +147,17 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
                     name="wordEn"
                     value={item.wordEn || ''}
                     onChange={(e) => handleChangeWord(e, index)}
+                    required
                   >
 
                   </input>
-                  <span> &minus; </span>
+                  <span className="editorCollection__item-span"> &minus; </span>
                   <input
                     className="editorCollection__item-input"
                     name="wordRu"
                     value={item.wordRu || ''}
                     onChange={(e) => handleChangeWord(e, index)}
+                    required
 
                   ></input>
                   <button className="editorCollection__itemButtonRemove" type="button" onClick={() => RemoveItemCollection(index)}>

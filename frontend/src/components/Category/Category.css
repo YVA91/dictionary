@@ -15,8 +15,6 @@
   cursor: pointer;
   border: 3px solid #3f1174;
   box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #3b0a0a;
-
-
   font-family: 'Tucsonone', Arial, sans-serif;
   font-weight: 400;
   font-size: 22px;
@@ -34,4 +32,13 @@
   top: .1em;
   left: .1em;
   box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+}
+
+@media screen and (max-width: 768px) {
+  .categor__button {
+    padding: 10px 5px;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 0 15px;
+  }
 }

@@ -7,7 +7,7 @@ function Nav() {
   return (
     <>
       <section className="nav">
-        <div className="contanierUp">
+        <div className="nav__contanierUp">
           <Link to="/signup" className="nav__link">
             <p className="nav__link-text">Регистрация</p>
             </Link>
@@ -15,7 +15,7 @@ function Nav() {
           <p className="nav__link-text">Войти</p>
           </Link>
         </div>
-        <div className="contanierDown">
+        <div className="nav__contanierDown">
           <Link to="#" className="nav__link"> <p className="nav__link-text">О проекте</p></Link>
         </div>
       </section>

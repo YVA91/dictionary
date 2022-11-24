@@ -116,3 +116,29 @@
   border-top: 1px solid #3f1174;
   overflow-Y: auto;
 }
+
+
+
+@media screen and (max-width: 768px) {
+
+  .popupCategory__title {
+    font-size: 20px;
+    line-height: 22px;
+  }
+  
+}
+
+@media screen and (max-width: 420px) {
+  .popupCategory__close {
+    width: 15px;
+    height: 15px;
+    top: -25px;
+    right: 0px;
+  }
+
+  .popupCategory__title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+}

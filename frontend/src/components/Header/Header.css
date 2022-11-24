@@ -1,7 +1,6 @@
 .header {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 35px 0 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,19 +38,6 @@
 
 .header__title-link {
   text-decoration: none;
-}
-@media screen and (max-width: 768px) {
-  .header__title  {
-    font-size: 56px;
-    line-height: 60px;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  .header__title  {
-    font-size: 32px;
-    line-height: 36px;
-  }
 }
 
 .header__button {
@@ -100,5 +86,40 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+
+}
+
+
+@media screen and (max-width: 768px) {
+  .header__title  {
+    font-size: 56px;
+    line-height: 60px;
+  }
+
+  .header__button {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .header {
+    padding: 35px 0 0 0;
+  }
+
+}
+
+@media screen and (max-width: 420px) {
+  .header__title  {
+    font-size: 35px;
+    line-height: 37px;
+  } 
+
+  .header__button {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  
+  .header__сontanier {
+    padding: 10px 0;
+  }
 
 }
