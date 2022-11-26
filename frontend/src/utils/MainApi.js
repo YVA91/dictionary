@@ -1,5 +1,5 @@
 /*const BASE_URL = 'http://localhost:3001';*/
-const BASE_URL = 'http://api.easy-word.ru/';
+const BASE_URL = 'http://api.easy-word.ru';
 
 const report = (res) => {
   if (res.ok) {
