@@ -14,7 +14,6 @@ function CardCategory({ onEdit, collection, onDeleteCollection, setAllCollection
   }
 
   function choiceCollection() {
-    console.log(collection)
     localStorage.setItem('collection', JSON.stringify(collection))
     closePopup()
   }

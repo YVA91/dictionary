@@ -15,7 +15,6 @@ import Footer from '../Footer/Footer';
 
 
 function App() {
-
   const [isPopupCategory, setIsPopupCategory] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
@@ -121,7 +120,6 @@ function App() {
       })
   }
 
-
   function handleExit() {
     MainApi.getExit()
       .then(() => {
@@ -144,7 +142,6 @@ function App() {
 
 
   function handleAddWordCollections(valueCollection, addItem) {
-    console.log(valueCollection, addItem)
     MainApi.postWordCollection(valueCollection, addItem)
       .then((data) => {
         console.log(data)
@@ -153,21 +150,6 @@ function App() {
         console.log(err)
       })
   }
-
-
-
-  function deleteWordCollection(collectionId) {
-    MainApi.deleteWordCollection(collectionId)
-      .then((data) => {
-        console.log(data)
-       /* setFilterSaveMovies((state) => state.filter((c) => c._id !== movie._id));*/
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-
-
 
   function handlePatchCollection(wordId, nameCollection, patchCollection) {
     MainApi.patchCollection(wordId, nameCollection, patchCollection)
@@ -204,6 +186,8 @@ function App() {
                 <Word
                   openPopupCategories={openPopupCategories}
                   openMainPopup={openMainPopup}
+            
+                  
                 />
               </ProtectedRoute>
             }
@@ -237,7 +221,6 @@ function App() {
           isPopupCategory={isPopupCategory}
           onSubmit={handleAddWordCollections}
           setIsPopupCategory={setIsPopupCategory}
-          onDeleteCollection={deleteWordCollection}
           onSubmitPatchCollection={handlePatchCollection}
         />
 

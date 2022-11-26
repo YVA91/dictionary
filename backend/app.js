@@ -16,7 +16,7 @@ const { PORT = 3001 } = process.env;
 const app = express();
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://api.easyword.ml/', 'http://api.easyword.ml/'],
     credentials: true,
   }),
 );

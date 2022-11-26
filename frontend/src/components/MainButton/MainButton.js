@@ -6,12 +6,15 @@ function Start() {
   openMainPopup()
 }
 
+JSON.parse(localStorage.getItem('collection'))
+
+
 
 
   return (
     
     <section className="mainButton">
-      <button type="button" className="mainButton__button" onClick={Start}>Start</button>
+      <button type="button" className="mainButton__button" disabled={(JSON.parse(localStorage.getItem('collection')) === null)} onClick={Start}>Start</button>
     </section>
   
   )
