@@ -35,7 +35,7 @@
 
 
 .mainPopup__title {
-  font-family: 'Tucsonone', Arial, sans-serif;
+  font-family: 'Lora', Arial, sans-serif;
   font-weight: 400;
   font-size: 25px;
   line-height: 27px;
@@ -47,8 +47,8 @@
   text-rendering: optimizeLegibility;
   color: #3f1174;
   text-align: center;
-  margin: 0;
-  padding: 40px 0 20px 0;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .mainPopup__close {
@@ -92,12 +92,6 @@
 
 .mainPopup__blok_translation {
   background-color: #228b22
-}
-
-.mainPopup__title {
-  margin: 0 auto;
-  padding: 20px;
-  font-family: 'Abril Fatface', cursive;
 }
 
 .mainPopup__title_visibility {
