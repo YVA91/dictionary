@@ -113,7 +113,9 @@ function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmit
 
       {editorBlok &&
         <div className="popupCategory__container">
-          <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closeEditorBlok}></button>
+          <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closeEditorBlok}>
+            <img className="popupCategory__close-img" alt="закрыть" src={buttonClose} />
+          </button>
           <EditorCollection
             onSubmit={onSubmit}
             closeEditorBlok={closeEditorBlok}
@@ -126,7 +128,9 @@ function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmit
 
       {changeCategory &&
         <div className="popupCategory__container">
-          <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closeChangeCategory}></button>
+          <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closeChangeCategory}>
+            <img className="popupCategory__close-img" alt="закрыть" src={buttonClose} />
+          </button>
           <EditorCollection
             isChangeCategory={isChangeCategory}
             changeCategory={changeCategory}
