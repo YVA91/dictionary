@@ -52,25 +52,6 @@
   padding: 20px;
 }
 
-.mainPopup__close {
-  background: url(../../images/close.svg);
-  border: none;
-  background-size: cover;
-  width: 25px;
-  height: 25px;
-  display: block;
-  position: absolute;
-  top: -35px;
-  right: -35px;
-  transition: .3s;
-  cursor: pointer;
-}
-
-.mainPopup__close:hover {
-  border: 2px solid #3f1174;
-  border-radius: 50%;
-}
-
 .mainPopup__blok-container {
   margin: 0;
   /*padding: 70px 0;*/
@@ -83,7 +64,6 @@
 
 .mainPopup_battom-container {
   display: flex;
-  /*padding: 0 0 70px 0;*/
   margin: 0;
 }
 
@@ -127,6 +107,40 @@
   padding: 10px
 }
 
+.mainPopup__close {
+  padding: 0;
+  margin: 0;
+  background-color:rgba(0, 125, 215, 0);
+  border: none;
+  width: 25px;
+  height: 25px;
+  display: block;
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.mainPopup__close-img{
+  width: 25px;
+  height: 25px;
+}
+
+.mainPopup__close-img:hover{
+  animation-name: rotation;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+}
+
+@keyframes rotation {
+  0% {
+      transform:rotate(0deg);
+  }
+  100% {
+      transform:rotate(360deg);
+  }
+}
 
 @media screen and (max-width: 420px) {
   .mainPopup__close {
@@ -134,6 +148,11 @@
     max-height: 15px;
     top: -25px;
     right: 0px;
+  }
+
+  .mainPopup__close-img{
+    max-width: 15px;
+    max-height: 15px;
   }
 
   .mainPopup__blok-container {
@@ -147,48 +166,3 @@
     padding: 0 0 35px 0;
   }
 }
-
-
-/*
-@media screen and (orientation:landscape) {
-  .mainPopup__container {
-    height: 70%;
-  }
-
-  .mainPopup__container {
-    margin: 0 10px;
-  }
-  
-  .mainPopup__title {
-    padding: 10px;
-  }
-
-  .mainPopup__blok-container {
-    margin: 0;
-    padding: 10px 0;
-  }
-
-  .mainPopup_battom-container {
-    padding: 0 0 10px 0;
-  }
-
-  .mainPopup__battom-img {
-    weight: 20px;
-    height: 20px;
-    padding: 10px
-  }
-
-  .mainPopup__battom {
-    margin: 15px 15px;
-  }
-  }
-  
-
-  @media screen and (max-width: 768px) and (orientation:landscape) {
-    .mainPopup__close {
-      max-width: 15px;
-      max-height: 15px;
-      top: -25px;
-      right: 0px;
-    }
-  }*/

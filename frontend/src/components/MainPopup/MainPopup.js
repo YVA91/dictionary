@@ -1,6 +1,7 @@
 import './MainPopup.css';
 import buttonOk from '../../images/mainOk.svg';
-import buttonNo from '../../images/mainNo.svg'
+import buttonNo from '../../images/mainNo.svg';
+import buttonClose from '../../images/close.svg'
 import { useState, useEffect } from 'react';
 
 
@@ -28,7 +29,9 @@ function MainPopup({ isMainPopup, closeMainPopup, isWord, mainTitle, setIsWord }
       <div className="mainPopup__container">
 
 
-        <button className="mainPopup__close" type="reset" aria-label="закрыть" onClick={closeMainPopup}></button>
+        <button className="mainPopup__close" type="reset" aria-label="закрыть" onClick={closeMainPopup}>
+          <img className="mainPopup__close-img" alt="закрыть" src={buttonClose}/>
+        </button>
         <h1 className="mainPopup__title">{mainTitle.name}</h1>
 
         <div className="mainPopup__blok-container">
