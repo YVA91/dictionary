@@ -22,7 +22,6 @@
 .mainPopup__container {
   margin: 0 50px;
   width: 1280px;
-  height: 70%;
   border-radius: 10px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   background-color: #fff;
@@ -142,3 +141,48 @@
   }
 }
 
+
+
+@media screen and (max-width: 768px) and (orientation:landscape) {
+  .mainPopup__close {
+    max-width: 15px;
+    max-height: 15px;
+    top: -25px;
+    right: 0px;
+  }
+}
+
+
+@media screen and (orientation:landscape) {
+  .mainPopup__container {
+    height: 70%;
+  }
+
+  .mainPopup__container {
+    margin: 0 10px;
+  }
+  
+  .mainPopup__title {
+    padding: 10px;
+  }
+
+  .mainPopup__blok-container {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .mainPopup_battom-container {
+    padding: 0 0 10px 0;
+  }
+
+  .mainPopup__battom-img {
+    weight: 20px;
+    height: 20px;
+    padding: 10px
+  }
+
+  .mainPopup__battom {
+    margin: 15px 15px;
+  }
+  }
+  
