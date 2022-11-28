@@ -3,6 +3,7 @@ import add from '../../images/add.svg'
 import CardCategory from '../CardCategory/CardCategory'
 import * as MainApi from '../../utils/MainApi';
 import EditorCollection from '../EditorCollection/EditorCollection'
+import buttonClose from '../../images/close.svg';
 
 
 
@@ -81,7 +82,9 @@ function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmit
 
       {isAllCategory &&
         <div className="popupCategory__container">
-          <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closePopup}></button>
+          <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closePopup}>
+            <img className="popupCategory__close-img" alt="закрыть" src={buttonClose} />
+          </button>
           <h1 className="popupCategory__title">Все категории</h1>
           <div className="popupCategory__title1">
             <div className="popupCategory__container-card">

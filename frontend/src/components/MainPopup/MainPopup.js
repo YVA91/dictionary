@@ -1,7 +1,7 @@
 import './MainPopup.css';
 import buttonOk from '../../images/mainOk.svg';
 import buttonNo from '../../images/mainNo.svg';
-import buttonClose from '../../images/close.svg'
+import buttonClose from '../../images/close.svg';
 import { useState, useEffect } from 'react';
 
 
