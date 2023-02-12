@@ -69,6 +69,7 @@
   position: relative;
   top: 0;
   left: 20px;
+  width: 90%;
 }
 
 .editorCollection__item {
@@ -76,9 +77,15 @@
   padding: 0;
   list-style: none;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
 }
 
 .editorCollection__item-input {
+  width: 45%;
+  display: inline-block;
   margin: 0;
   padding: 0;
   border: none;
@@ -110,7 +117,7 @@
 .editorCollection__button {
   position: relative;
   margin: 20px;
-  padding: 0;
+  padding: 10px;
   width: 40%;
   align-self: center;
   background-color: inherit;
@@ -201,10 +208,10 @@
   .editorCollection__item-input {
     margin: 0 0 10px 0;
     text-align: center;
+    width: 100%;
   }
 
 }
-
 
 
 @media screen and (max-width: 420px) {

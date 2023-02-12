@@ -3,24 +3,45 @@ import buttonOk from '../../images/mainOk.svg';
 import buttonNo from '../../images/mainNo.svg';
 import buttonClose from '../../images/close.svg';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import {filterWord} from '../../store/todoSlice' 
+import {replayFilterWord} from '../../store/todoSlice' 
+import {closeMainPopup} from '../../store/todoSlice' 
+
+function MainPopup() {
 
 
-function MainPopup({ isMainPopup, closeMainPopup, isWord, mainTitle, setIsWord }) {
+  const dispatch = useDispatch();
 
-  const [wordVisibility, setWordVisibility] = useState(true)
+  const [wordVisibility, setWordVisibility] = useState(false)
 
-
+  const isMainPopup = useSelector(state => state.todos.isMainPopup);
+  const isCollection = useSelector(state => state.todos.isCollection);
+  const isWord = useSelector(state => state.todos.isWord);
+  const isFilter= useSelector(state => state.todos.isFilter);
 
   function handleKnowOk() {
-    console.log("fh gf")
-    setIsWord(JSON.parse(localStorage.getItem('collection')).word[Math.floor(Math.random() * JSON.parse(localStorage.getItem('collection')).word.length)])
-    setWordVisibility(true);
+    setWordVisibility(false);
+    if ((isFilter.length) !== 0) {
+      dispatch(filterWord())
+  } else {
+    dispatch(replayFilterWord())
+    dispatch(filterWord())
+  }
 
   }
 
   function handleKnowNo() {
+    setWordVisibility(true);
+  }
+
+
+  function closePopup() {
+    dispatch(closeMainPopup())
     setWordVisibility(false);
   }
+
 
   return (
 
@@ -29,17 +50,17 @@ function MainPopup({ isMainPopup, closeMainPopup, isWord, mainTitle, setIsWord }
       <div className="mainPopup__container">
 
 
-        <button className="mainPopup__close" type="reset" aria-label="закрыть" onClick={closeMainPopup}>
+        <button className="mainPopup__close" type="reset" aria-label="закрыть" onClick={closePopup}>
           <img className="mainPopup__close-img" alt="закрыть" src={buttonClose}/>
         </button>
-        <h1 className="mainPopup__title">{mainTitle.name}</h1>
+        <h1 className="mainPopup__title">{isCollection.name}</h1>
 
         <div className="mainPopup__blok-container">
           <div className="mainPopup__blok">
             <h2 className="mainPopup__title mainPopup__title-english">{isWord.wordEn}</h2>
           </div>
           <div className="mainPopup__blok mainPopup__blok_translation">
-            <h2 className={`mainPopup__title ${wordVisibility && 'mainPopup__title_visibility'}`}>{isWord.wordRu}</h2>
+            <h2 className={`mainPopup__title ${wordVisibility  ? '' : 'mainPopup__title_visibility'}`}>{isWord.wordRu}</h2>
           </div>
         </div>
 

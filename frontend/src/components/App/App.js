@@ -13,17 +13,27 @@ import * as MainApi from '../../utils/MainApi';
 import MainPopup from "../MainPopup/MainPopup";
 import Footer from '../Footer/Footer';
 
+import { useDispatch } from 'react-redux';
+import {popup} from '../../store/todoSlice' 
+import {closeMainPopup} from '../../store/todoSlice' 
+
+import { useSelector } from 'react-redux';
+
 
 function App() {
+
+  const isMainPopup = useSelector(state => state.todos.isMainPopup);
+
+
+  const dispatch = useDispatch();
+
+
   const [isPopupCategory, setIsPopupCategory] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState({});
   const [errorServer, setErrorServer] = useState('');
-  const [isMainPopup, setIsMainPopup] = useState(false);
-  const [isWord, setIsWord] = useState('')
-  const [mainTitle, setMainTitle] = useState('')
-
+ 
 
 
 
@@ -48,15 +58,13 @@ function App() {
 
 
 
-
   useEffect(() => {
     function closeByEscapeAndOverlay(evt) {
       if (evt.key === 'Escape') {
         closePopup()
       }
-      if (evt.target.classList.contains('popupCategory' && 'mainPopup')) {
+      if (evt.target.classList.contains('popupCategory') || evt.target.classList.contains('mainPopup')) {
         closePopup()
-
       }
     }
     if (isPopupCategory || isMainPopup) {
@@ -68,21 +76,6 @@ function App() {
       }
     }
   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   function handleSubmitRegister(email, password, name) {
@@ -137,7 +130,7 @@ function App() {
 
   function closePopup() {
     setIsPopupCategory(false)
-    setIsMainPopup(false);
+    dispatch(closeMainPopup())
   }
 
 
@@ -163,9 +156,7 @@ function App() {
   }
 
   function openMainPopup() {
-    setIsMainPopup(true)
-    setIsWord(JSON.parse(localStorage.getItem('collection')).word[Math.floor(Math.random() * JSON.parse(localStorage.getItem('collection')).word.length)])
-    setMainTitle(JSON.parse(localStorage.getItem('collection')))
+    dispatch(popup())
   }
 
   return (
@@ -225,11 +216,7 @@ function App() {
         />
 
         <MainPopup
-          isMainPopup={isMainPopup}
           closeMainPopup={closePopup}
-          isWord={isWord}
-          mainTitle={mainTitle}
-          setIsWord={setIsWord}
         />
 
       </CurrentUserContext.Provider>

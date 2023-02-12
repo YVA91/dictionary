@@ -3,6 +3,7 @@ import Category from '../Category/Category';
 import MainButton from '../MainButton/MainButton';
 import { useState, useEffect } from 'react';
 
+
 function Word({openPopupCategories, openMainPopup}) {
   
   
