@@ -7,17 +7,15 @@ function Nav() {
   return (
     <>
       <section className="nav">
-        <div className="nav__contanierUp">
-          <Link to="/signup" className="nav__link">
-            <p className="nav__link-text">Регистрация</p>
-            </Link>
-          <Link to="/signin" className="nav__link">
+        <Link to="/signup" className="nav__link">
+          <p className="nav__link-text">Регистрация</p>
+        </Link>
+        <Link to="/signin" className="nav__link">
           <p className="nav__link-text">Войти</p>
-          </Link>
-        </div>
-        <div className="nav__contanierDown">
-          <Link to="#" className="nav__link"> <p className="nav__link-text">О проекте</p></Link>
-        </div>
+        </Link>
+        <Link to="#" className="nav__link">
+          <p className="nav__link-text">О проекте</p>
+        </Link>
       </section>
     </>
   )

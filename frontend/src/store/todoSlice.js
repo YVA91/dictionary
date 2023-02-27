@@ -6,7 +6,7 @@ const mainPopup = createSlice({
     isMainPopup: false,
     isWord: '',
     isCollection: '',
-    isFilter: (JSON.parse(localStorage.getItem('collection')).word)
+    isFilter: /*(JSON.parse(localStorage.getItem('collection')).word)*/ []
     
   },
   reducers: {
@@ -26,23 +26,6 @@ const mainPopup = createSlice({
     closeMainPopup: (state, action) => {
       state.isMainPopup = false;
     },
-
-
-
-
-
-
-
-
-    /*
-    removeTodo (state, action) {
-      state.todos = state.todos.filter(todo => todo.id !== action.payload.id)
-    },
-    toggleTodoComplate (state, action) {
-      const toggledTodo = state.todos.find(todo => todo.id === action.payload.id)
-      toggledTodo.completed = !toggledTodo.completed
-
-    }*/
   },
 });
 

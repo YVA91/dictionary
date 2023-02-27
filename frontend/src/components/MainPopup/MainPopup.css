@@ -105,6 +105,22 @@
   box-shadow: 0 0 0 60px rgba(0, 0, 0, .05) inset;
 }
 
+.mainPopup__buttonSound {
+  cursor: pointer;
+  border: 3px solid rebeccapurple;
+  border-radius: 50%;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, .1em .1em .2em #800;
+
+}
+
+.mainPopup__buttonSound:active {
+  top: .1em;
+  left: .1em;
+  box-shadow: 0 0 0 60px rgba(0, 0, 0, .05) inset;
+}
+
+
+
 .mainPopup__battom-img {
   weight: 30px;
   height: 30px;

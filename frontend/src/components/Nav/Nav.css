@@ -14,7 +14,7 @@
   transition: .3s;
   text-align: center;
   text-decoration: none;
-  width: 50%;
+  height: 80px;
 }
 
 .nav__link-text {
@@ -98,19 +98,3 @@
     line-height: 20px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
