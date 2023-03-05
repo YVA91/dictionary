@@ -18,14 +18,13 @@ function CardCategory({ onEdit, collection, onDeleteCollection, setAllCollection
     closePopup()
   }
 
-
-
+  console.log(collection.word.length)
 
   return (
 
     <section className="cardCategory">
       <button className="cardCategory__title" type="button" onClick={choiceCollection}>
-        {collection.name}
+        {collection.name} ({collection.word.length})
       </button>
       <div className="cardCategory__bitton-container">
         <button type="button" className="cardCategory__bitton" onClick={hadlyOpenEditWord}>

@@ -8,9 +8,6 @@ function Start() {
 
 JSON.parse(localStorage.getItem('collection'))
 
-
-
-
   return (
     
     <section className="mainButton">
