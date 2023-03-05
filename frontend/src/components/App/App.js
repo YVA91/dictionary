@@ -6,6 +6,9 @@ import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Word from "../Word/Word";
+
+import Verbs from "../Verbs/Verbs";
+
 import PopupCategory from "../PopupCategory/PopupCategory";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
@@ -14,8 +17,8 @@ import MainPopup from "../MainPopup/MainPopup";
 import Footer from '../Footer/Footer';
 
 import { useDispatch } from 'react-redux';
-import {popup} from '../../store/todoSlice' 
-import {closeMainPopup} from '../../store/todoSlice' 
+import { popup } from '../../store/todoSlice'
+import { closeMainPopup } from '../../store/todoSlice'
 
 import { useSelector } from 'react-redux';
 
@@ -33,7 +36,7 @@ function App() {
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState({});
   const [errorServer, setErrorServer] = useState('');
- 
+
 
 
 
@@ -170,7 +173,6 @@ function App() {
           <Route exact path="/">
             <Main />
           </Route>
-
           <Route
             exact path="/word"
             children={
@@ -178,12 +180,27 @@ function App() {
                 <Word
                   openPopupCategories={openPopupCategories}
                   openMainPopup={openMainPopup}
-            
-                  
                 />
               </ProtectedRoute>
             }
           />
+
+          <Route
+            exact path="/verbs"
+            children={
+              <ProtectedRoute loggedIn={loggedIn}>
+                <Verbs/>
+              </ProtectedRoute>
+            }
+          />
+
+
+
+
+
+
+
+
 
           <Route path="/signup">
             {!loggedIn ? (
