@@ -18,8 +18,6 @@ function CardCategory({ onEdit, collection, onDeleteCollection, setAllCollection
     closePopup()
   }
 
-  console.log(collection.word.length)
-
   return (
 
     <section className="cardCategory">

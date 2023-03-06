@@ -11,11 +11,10 @@ import { replayFilterWord } from '../../store/todoSlice'
 import { closeMainPopup } from '../../store/todoSlice'
 
 function MainPopup() {
-
+  const [wordRuVisibility, setWordRuVisibility] = useState(false);
+  const [wordEnVisibility, setWordEnVisibility] = useState(true);
 
   const dispatch = useDispatch();
-
-  const [wordVisibility, setWordVisibility] = useState(false)
 
   const isMainPopup = useSelector(state => state.todos.isMainPopup);
   const isCollection = useSelector(state => state.todos.isCollection);
@@ -23,28 +22,34 @@ function MainPopup() {
   const isFilter = useSelector(state => state.todos.isFilter);
 
   function handleKnowOk() {
-    setWordVisibility(false);
+    let booleanValue;
+    if (Math.random() > .5) {
+      booleanValue = true;
+    } else {
+      booleanValue = false;
+    }
+    setWordRuVisibility(booleanValue)
+    setWordEnVisibility(!booleanValue)
     if ((isFilter.length) !== 0) {
       dispatch(filterWord())
     } else {
       dispatch(replayFilterWord())
       dispatch(filterWord())
     }
-
   }
 
   function handleKnowNo() {
-    setWordVisibility(true);
+    setWordRuVisibility(true)
+    setWordEnVisibility(true)
   }
-
 
   function closePopup() {
     dispatch(closeMainPopup())
-    setWordVisibility(false);
+    setWordRuVisibility(false);
+    setWordEnVisibility(true);
   }
 
   function handleSound() {
-
     const voices = window.speechSynthesis.getVoices();
     const lastVoice = voices[voices.length - 3];
     const utterance = new SpeechSynthesisUtterance(isWord.wordEn);
@@ -55,32 +60,29 @@ function MainPopup() {
     window.speechSynthesis.speak(utterance);
   }
 
-
-
   return (
 
     <section className={`mainPopup ${isMainPopup && 'mainPopup_visible'}`}>
-
       <div className="mainPopup__container">
-
-
         <button className="mainPopup__close" type="reset" aria-label="закрыть" onClick={closePopup}>
           <img className="mainPopup__close-img" alt="закрыть" src={buttonClose} />
         </button>
         <h1 className="mainPopup__title">{isCollection.name}</h1>
-
         <div className="mainPopup__blok-container">
+
           <div className="mainPopup__blok">
-            <h2 className="mainPopup__title mainPopup__title-english">{isWord.wordEn}</h2>
+            <h2 className={`mainPopup__title ${wordEnVisibility ? '' : 'mainPopup__title_visibility'}`}>{isWord.wordEn}</h2>
           </div>
+
           <div className="mainPopup__blok mainPopup__blok_translation">
-            <h2 className={`mainPopup__title ${wordVisibility ? '' : 'mainPopup__title_visibility'}`}>{isWord.wordRu}</h2>
+            <h2 className={`mainPopup__title ${wordRuVisibility ? '' : 'mainPopup__title_visibility'}`}>{isWord.wordRu}</h2>
           </div>
+
+
         </div>
         <button className="mainPopup__buttonSound" type="button" onClick={handleSound}>
           <img className="mainPopup__battom-img" alt="озвучить" src={buttonSound} />
         </button>
-
         <div className="mainPopup_battom-container">
           <button className="mainPopup__battom mainPopup__battom-ok" type="button" onClick={handleKnowOk}>
             <img className="mainPopup__battom-img" alt="знаю" src={buttonOk} />
