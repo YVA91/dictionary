@@ -22,12 +22,7 @@ function MainPopup() {
   const isFilter = useSelector(state => state.todos.isFilter);
 
   function handleKnowOk() {
-    let booleanValue;
-    if (Math.random() > .5) {
-      booleanValue = true;
-    } else {
-      booleanValue = false;
-    }
+    let booleanValue = Math.random() >= 0.5;
     setWordRuVisibility(booleanValue)
     setWordEnVisibility(!booleanValue)
     if ((isFilter.length) !== 0) {
