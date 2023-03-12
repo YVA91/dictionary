@@ -42,16 +42,11 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
     setAddItemCollection(items)
   };
 
-
-
-
   function handleSubmit(e) {
     e.preventDefault();
     onSubmit(valueCollection, addItem);
     closeEditorBlok()
   }
-
-
 
   const onAddLiCollection = () => {
     setAddItemCollection([...addItemCollection, {}])

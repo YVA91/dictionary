@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from './todoSlice';
+import WordReducer from './mainPopupDictionary';
 
 export default configureStore({
   reducer: {
-    todos: todoReducer,
+    WordReducer: WordReducer,
   }
 })

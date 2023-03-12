@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Word from "../Word/Word";
+import Preload from "../Preload/Preload";
 
 import Verbs from "../Verbs/Verbs";
 
@@ -17,28 +18,21 @@ import MainPopup from "../MainPopup/MainPopup";
 import Footer from '../Footer/Footer';
 
 import { useDispatch } from 'react-redux';
-import { popup } from '../../store/todoSlice'
-import { closeMainPopup } from '../../store/todoSlice'
+import { popup } from '../../store/mainPopupDictionary'
+import { closeMainPopup } from '../../store/mainPopupDictionary'
 
 import { useSelector } from 'react-redux';
 
 
 function App() {
-
-  const isMainPopup = useSelector(state => state.todos.isMainPopup);
-
-
+  const isMainPopup = useSelector(state => state.WordReducer.isMainPopup);
   const dispatch = useDispatch();
-
-
   const [isPopupCategory, setIsPopupCategory] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState({});
   const [errorServer, setErrorServer] = useState('');
-
-
-
+  const [isPreload, setIsPreload] = useState(false);
 
 
   useEffect(() => {
@@ -59,8 +53,6 @@ function App() {
     })
   }, [history]);
 
-
-
   useEffect(() => {
     function closeByEscapeAndOverlay(evt) {
       if (evt.key === 'Escape') {
@@ -79,7 +71,6 @@ function App() {
       }
     }
   })
-
 
   function handleSubmitRegister(email, password, name) {
     MainApi.register(email, password, name)
@@ -136,25 +127,31 @@ function App() {
     dispatch(closeMainPopup())
   }
 
-
   function handleAddWordCollections(valueCollection, addItem) {
+    setIsPreload(true);
     MainApi.postWordCollection(valueCollection, addItem)
       .then((data) => {
-        console.log(data)
       })
       .catch((err) => {
         console.log(err)
+      })
+      .finally(() => {
+      setIsPreload(false)
       })
   }
 
   function handlePatchCollection(wordId, nameCollection, patchCollection) {
+    setIsPreload(true);
     MainApi.patchCollection(wordId, nameCollection, patchCollection)
       .then((data) => {
-        console.log(data)
-        localStorage.setItem('collection', JSON.stringify(data))
+        console.log(data);
+        localStorage.setItem('collection', JSON.stringify(data));
       })
       .catch((err) => {
         console.log(err)
+      })
+      .finally(() => {
+      setIsPreload(false)
       })
   }
 
@@ -162,15 +159,17 @@ function App() {
     dispatch(popup())
   }
 
-
   return (
     <>
       <CurrentUserContext.Provider value={currentUser} >
         <Header
           onExit={handleExit}
         />
+        <Preload
+        isPreload={isPreload}/>
         <Switch>
           <Route exact path="/">
+            
             <Main />
           </Route>
           <Route
@@ -181,6 +180,7 @@ function App() {
                   openPopupCategories={openPopupCategories}
                   openMainPopup={openMainPopup}
                 />
+                
               </ProtectedRoute>
             }
           />
@@ -189,18 +189,10 @@ function App() {
             exact path="/verbs"
             children={
               <ProtectedRoute loggedIn={loggedIn}>
-                <Verbs/>
+                <Verbs />
               </ProtectedRoute>
             }
           />
-
-
-
-
-
-
-
-
 
           <Route path="/signup">
             {!loggedIn ? (
@@ -223,8 +215,6 @@ function App() {
             ) : (<Redirect to="/word" />)
             } </Route>
 
-
-
         </Switch>
         <PopupCategory
           isPopupCategory={isPopupCategory}
@@ -232,11 +222,9 @@ function App() {
           setIsPopupCategory={setIsPopupCategory}
           onSubmitPatchCollection={handlePatchCollection}
         />
-
         <MainPopup
           closeMainPopup={closePopup}
         />
-
       </CurrentUserContext.Provider>
       <Footer />
     </>

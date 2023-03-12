@@ -3,12 +3,12 @@ import buttonOk from '../../images/mainOk.svg';
 import buttonNo from '../../images/mainNo.svg';
 import buttonClose from '../../images/close.svg';
 import buttonSound from '../../images/buttonSound.svg';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { filterWord } from '../../store/todoSlice'
-import { replayFilterWord } from '../../store/todoSlice'
-import { closeMainPopup } from '../../store/todoSlice'
+import { filterWord } from '../../store/mainPopupDictionary'
+import { replayFilterWord } from '../../store/mainPopupDictionary'
+import { closeMainPopup } from '../../store/mainPopupDictionary'
 
 function MainPopup() {
   const [wordRuVisibility, setWordRuVisibility] = useState(false);
@@ -16,10 +16,10 @@ function MainPopup() {
 
   const dispatch = useDispatch();
 
-  const isMainPopup = useSelector(state => state.todos.isMainPopup);
-  const isCollection = useSelector(state => state.todos.isCollection);
-  const isWord = useSelector(state => state.todos.isWord);
-  const isFilter = useSelector(state => state.todos.isFilter);
+  const isMainPopup = useSelector(state => state.WordReducer.isMainPopup);
+  const isCollection = useSelector(state => state.WordReducer.isCollection);
+  const isWord = useSelector(state => state.WordReducer.isWord);
+  const isFilter = useSelector(state => state.WordReducer.isFilter);
 
   function handleKnowOk() {
     let booleanValue = Math.random() >= 0.5;
@@ -48,6 +48,8 @@ function MainPopup() {
     const voices = window.speechSynthesis.getVoices();
     const lastVoice = voices[voices.length - 3];
     const utterance = new SpeechSynthesisUtterance(isWord.wordEn);
+    /*utterance.lang = "en-US"
+    utterance.lang = "es-Es"*/
     utterance.voice = lastVoice;
     utterance.pitch = 0.8;  // пониже
     utterance.rate = 1.2;   // побыстрее
@@ -56,7 +58,6 @@ function MainPopup() {
   }
 
   return (
-
     <section className={`mainPopup ${isMainPopup && 'mainPopup_visible'}`}>
       <div className="mainPopup__container">
         <button className="mainPopup__close" type="reset" aria-label="закрыть" onClick={closePopup}>
@@ -72,8 +73,6 @@ function MainPopup() {
           <div className="mainPopup__blok mainPopup__blok_translation">
             <h2 className={`mainPopup__title ${wordRuVisibility ? '' : 'mainPopup__title_visibility'}`}>{isWord.wordRu}</h2>
           </div>
-
-
         </div>
         <button className="mainPopup__buttonSound" type="button" onClick={handleSound}>
           <img className="mainPopup__battom-img" alt="озвучить" src={buttonSound} />
@@ -86,17 +85,8 @@ function MainPopup() {
             <img className="mainPopup__battom-img" alt="не знаю" src={buttonNo} onClick={handleKnowNo} />
           </button>
         </div>
-
-
       </div>
-
-
-
-
     </section>
-
-
-
   )
 }
 export default MainPopup;
