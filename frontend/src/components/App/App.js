@@ -8,7 +8,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Word from "../Word/Word";
 import Preload from "../Preload/Preload";
 
-import Verbs from "../Verbs/Verbs";
+import IrregularVerbs from "../IrregularVerbs/IrregularVerbs";
 
 import PopupCategory from "../PopupCategory/PopupCategory";
 import Register from "../Register/Register";
@@ -20,20 +20,19 @@ import Footer from '../Footer/Footer';
 import { useDispatch } from 'react-redux';
 import { popup } from '../../store/mainPopupDictionary'
 import { closeMainPopup } from '../../store/mainPopupDictionary'
-
+import { setEditorBlok, setChangeCategory } from '../../store/statePopup'
 import { useSelector } from 'react-redux';
-
 
 function App() {
   const isMainPopup = useSelector(state => state.WordReducer.isMainPopup);
+  const isPopupCategory = useSelector(state => state.statePopup.statePopupCategories);
+  
   const dispatch = useDispatch();
-  const [isPopupCategory, setIsPopupCategory] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState({});
   const [errorServer, setErrorServer] = useState('');
   const [isPreload, setIsPreload] = useState(false);
-
 
   useEffect(() => {
     MainApi.getUserInfo()
@@ -118,12 +117,7 @@ function App() {
       .catch(err => console.log(err))
   }
 
-  function openPopupCategories() {
-    setIsPopupCategory(true);
-  }
-
   function closePopup() {
-    setIsPopupCategory(false)
     dispatch(closeMainPopup())
   }
 
@@ -131,6 +125,7 @@ function App() {
     setIsPreload(true);
     MainApi.postWordCollection(valueCollection, addItem)
       .then((data) => {
+        dispatch(setEditorBlok())
       })
       .catch((err) => {
         console.log(err)
@@ -140,12 +135,13 @@ function App() {
       })
   }
 
+
   function handlePatchCollection(wordId, nameCollection, patchCollection) {
     setIsPreload(true);
     MainApi.patchCollection(wordId, nameCollection, patchCollection)
       .then((data) => {
-        console.log(data);
         localStorage.setItem('collection', JSON.stringify(data));
+        dispatch(setChangeCategory())
       })
       .catch((err) => {
         console.log(err)
@@ -177,7 +173,6 @@ function App() {
             children={
               <ProtectedRoute loggedIn={loggedIn}>
                 <Word
-                  openPopupCategories={openPopupCategories}
                   openMainPopup={openMainPopup}
                 />
                 
@@ -186,10 +181,10 @@ function App() {
           />
 
           <Route
-            exact path="/verbs"
+            exact path="/IrregularVerbs"
             children={
               <ProtectedRoute loggedIn={loggedIn}>
-                <Verbs />
+                <IrregularVerbs/>
               </ProtectedRoute>
             }
           />
@@ -217,9 +212,7 @@ function App() {
 
         </Switch>
         <PopupCategory
-          isPopupCategory={isPopupCategory}
           onSubmit={handleAddWordCollections}
-          setIsPopupCategory={setIsPopupCategory}
           onSubmitPatchCollection={handlePatchCollection}
         />
         <MainPopup

@@ -6,7 +6,7 @@ const mainPopup = createSlice({
     isMainPopup: false,
     isWord: '',
     isCollection: '',
-    isFilter: /*(JSON.parse(localStorage.getItem('collection')).word)*/ []
+    isFilter: []
     
   },
   reducers: {

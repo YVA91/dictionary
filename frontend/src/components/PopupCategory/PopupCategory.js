@@ -4,17 +4,21 @@ import CardCategory from '../CardCategory/CardCategory'
 import * as MainApi from '../../utils/MainApi';
 import EditorCollection from '../EditorCollection/EditorCollection'
 import buttonClose from '../../images/close.svg';
-
-
-
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setPopupCategories, setEditorBlok, setChangeCategory } from '../../store/statePopup'
 
-function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmitPatchCollection }) {
-  const [changeCategory, setChangeCategory] = useState(false);
-  const [isAllCategory, setIsAllCategory] = useState(true);
+function PopupCategory({ onSubmit, onSubmitPatchCollection }) {
+
   const [allCollection, setAllCollection] = useState([]);
-  const [editorBlok, setEditorBlok] = useState(false);
   const [isChangeCategory, setIsChangeCategory] = useState({});
+
+  const statePopupCategories = useSelector(state => state.statePopup.statePopupCategories);
+  const stateIsAllCategory = useSelector(state => state.statePopup.stateIsAllCategory);
+  const editorBlok = useSelector(state => state.statePopup.stateEditorBlok);
+  const changeCategory = useSelector(state => state.statePopup.stateChangeCategory);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     MainApi.getWordCollecton()
@@ -24,13 +28,11 @@ function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmit
       .catch((err) => {
         console.log(err);
       })
-  }, [isAllCategory, isPopupCategory])
-
+  }, [stateIsAllCategory, statePopupCategories])
 
   function deleteWordCollection(collectionId) {
     MainApi.deleteWordCollection(collectionId)
       .then((data) => {
-        console.log(data.WordId)
         setAllCollection((state) => state.filter((c) => c._id !== data._id));
         if (data.WordId._id == JSON.parse(localStorage.getItem('collection'))._id) {
           localStorage.removeItem('collection')
@@ -41,46 +43,32 @@ function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmit
       })
   }
 
-
-
-
   function closePopup() {
-    setIsPopupCategory(false);
-    setTimeout(closeEditorBlok, 500);
-    setTimeout(closeChangeCategory, 500);
+    dispatch(setPopupCategories());
   }
 
-
   function openEditorBlok() {
-    setIsAllCategory(false)
-    setEditorBlok(true)
+    dispatch(setEditorBlok())
   }
 
   function closeEditorBlok() {
-    setIsAllCategory(true)
-    setEditorBlok(false)
+    dispatch(setEditorBlok())
   }
 
-
-
   function openEditWord(collection) {
-    setChangeCategory(true)
-    setIsAllCategory(false)
+    dispatch(setChangeCategory())
     setIsChangeCategory(collection)
   }
 
   function closeChangeCategory() {
-    setIsAllCategory(true)
-    setChangeCategory(false)
+    dispatch(setChangeCategory())
     setIsChangeCategory('')
   }
 
-
-
   return (
-    <section className={`popupCategory ${isPopupCategory && 'popupCategory_visible'}`}>
+    <section className={`popupCategory ${statePopupCategories && 'popupCategory_visible'}`}>
 
-      {isAllCategory &&
+      {stateIsAllCategory &&
         <div className="popupCategory__container">
           <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closePopup}>
             <img className="popupCategory__close-img" alt="закрыть" src={buttonClose} />
@@ -101,7 +89,6 @@ function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmit
                   />)
               })
               }
-
             </div>
           </div>
           <button className="popupCategory__button" type="button" onClick={openEditorBlok}>
@@ -109,7 +96,6 @@ function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmit
           </button>
         </div>
       }
-
 
       {editorBlok &&
         <div className="popupCategory__container">
@@ -125,7 +111,6 @@ function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmit
         </div>
       }
 
-
       {changeCategory &&
         <div className="popupCategory__container">
           <button className="popupCategory__close" type="reset" aria-label="закрыть" onClick={closeChangeCategory}>
@@ -134,22 +119,11 @@ function PopupCategory({ isPopupCategory, onSubmit, setIsPopupCategory, onSubmit
           <EditorCollection
             isChangeCategory={isChangeCategory}
             changeCategory={changeCategory}
-            closeChangeCategory={closeChangeCategory}
             onSubmitPatchCollection={onSubmitPatchCollection}
-
-
           />
         </div>
       }
-
-
-
-
-
     </section>
-
-
-
   )
 }
 export default PopupCategory;

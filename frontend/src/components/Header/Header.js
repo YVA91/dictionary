@@ -13,7 +13,7 @@ function Header({onExit}) {
         <Link to="/word" className="header__title-link">
           <h1 className="header__title">EasyWord</h1>
         </Link>
-        <Route exact path={"/word"}>
+        <Route exact path={["/word", "/IrregularVerbs"]}>
           <h2 className="header__profile-name">Привет, {currentUser.name}!</h2>
           <div className="header__сontanier">
             <button className="header__button" type="button">Профиль</button>

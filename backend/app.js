@@ -22,7 +22,7 @@ app.use(
 );
 app.use(helmet());
 app.use(requestLogger);
-app.use(limiter);
+/*app.use(limiter);*/
 app.use(cookieParser());
 app.use(express.json());
 app.use('/', router);

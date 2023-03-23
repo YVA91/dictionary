@@ -3,10 +3,11 @@ import add from '../../images/add.svg'
 import deleteButton from '../../images/delete.svg';
 import { useState } from 'react';
 
-function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCategory, changeCategory, closeChangeCategory, onSubmitPatchCollection }) {
+function EditorCollection({ onSubmit, editorBlok, isChangeCategory, changeCategory, onSubmitPatchCollection }) {
 
   const [addItem, setAddItem] = useState([{}])
   const [addItemCollection, setAddItemCollection] = useState(isChangeCategory.word)
+  console.log(changeCategory)
 
 
   const [valueCollection, setValueCollection] = useState(isChangeCategory.name);
@@ -17,7 +18,6 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
     items[index][name] = value;
     setAddItem(items)
   }
-
 
   const onAddLi = () => {
     setAddItem([...addItem, {}])
@@ -34,7 +34,6 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
     setValueCollection(value)
   };
 
-
   const handleChangeWord = (e, index) => {
     const { name, value } = e.target;
     const items = [...addItemCollection];
@@ -45,7 +44,6 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
   function handleSubmit(e) {
     e.preventDefault();
     onSubmit(valueCollection, addItem);
-    closeEditorBlok()
   }
 
   const onAddLiCollection = () => {
@@ -61,11 +59,7 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
   function handleSubmitPatchCollection(e) {
     e.preventDefault();
     onSubmitPatchCollection(isChangeCategory._id, valueCollection, addItemCollection);
-    closeChangeCategory()
   }
-
-
-
 
   return (
     <>
@@ -109,12 +103,10 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
                   </button>
                 </li>
               ))}
-
             </ul>
             <button className="editorCollection__eddButton" type="button" onClick={onAddLi}>
               <img src={add} alt="Добавить" className="editorCollection__eddButton-img" />
             </button>
-
           </div>
           <button className="editorCollection__button" type="submit">
             Сохранить
@@ -146,7 +138,6 @@ function EditorCollection({ onSubmit, closeEditorBlok, editorBlok, isChangeCateg
                     required
                     placeholder="Слово"
                   >
-
                   </input>
                   <span className="editorCollection__item-span"> &minus; </span>
                   <input
