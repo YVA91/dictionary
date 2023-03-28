@@ -21,8 +21,6 @@ function IrregularVerbs() {
     window.speechSynthesis.speak(utterance);
   }
 
-
-
   return (
     <section className="verbs">
       <h1 className="verbs__title">Неправильные глаголы</h1>
