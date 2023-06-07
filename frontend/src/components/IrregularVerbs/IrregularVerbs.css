@@ -1,5 +1,5 @@
 .verbs {
-  width:100%;
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -59,7 +59,8 @@
   padding: 10px 10px;
   margin: 0;
 }
- .verbs__list-item {
+
+.verbs__list-item {
   display: inline-block;
   font-family: 'Lora', Arial, sans-serif;
   font-weight: 400;
@@ -76,13 +77,34 @@
   margin: 0 auto;
   padding: 5px;
   width: 20%;
-  text-overflow: ellipsis;
-  overflow: hidden;
   border: 1px solid #3f1174;
-  box-sizing: border-box
- }
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
- .verbs__list-item_translation{
+.verbs__list-item_translation {
   width: 40%;
- }
+}
 
+@media screen and (max-width: 1280px) {
+  .verbs__list-item {
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .verbs__list-item {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .verbs__list-item {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}

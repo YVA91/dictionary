@@ -16,7 +16,7 @@ function Header({onExit}) {
         <Route exact path={["/word", "/IrregularVerbs"]}>
           <h2 className="header__profile-name">Привет, {currentUser.name}!</h2>
           <div className="header__сontanier">
-            <button className="header__button" type="button">Профиль</button>
+            <Link to="/profile" className="header__button">Профиль</Link>
             <button className="header__button" type="button" onClick={onExit}>Выход</button>
           </div>
         </Route>

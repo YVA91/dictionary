@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const { BadRequestError } = require('../errors/BadRequestError');
@@ -19,6 +20,13 @@ module.exports.createUsers = async (req, res, next) => {
     res.status(200).send({
       email: users.email,
       name: users.name,
+    });
+    fs.mkdir(`./usersfile/${users._id}`, (err) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(`Folder ${email} created successfully`);
+      }
     });
   } catch (err) {
     if (err.name === 'ValidationError') {

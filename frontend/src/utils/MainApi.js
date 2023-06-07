@@ -1,5 +1,5 @@
-/*const BASE_URL = 'http://localhost:3001';*/
-const BASE_URL = 'https://api.easy-word.ru';
+const BASE_URL = 'http://localhost:3001';
+//const BASE_URL = 'https://api.easy-word.ru';
 
 const report = (res) => {
   if (res.ok) {
@@ -91,12 +91,6 @@ export const patchCollection = (wordId, nameCollection, patchCollection) => {
   })
     .then(report)
 }
-
-
-
-
-
-
 
 export const getExit = () => {
   return fetch(`${BASE_URL}/signout`, {

@@ -1,5 +1,6 @@
 import './App.css';
 import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
 import Header from "../Header/Header";
 import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -26,7 +27,7 @@ import { useSelector } from 'react-redux';
 function App() {
   const isMainPopup = useSelector(state => state.WordReducer.isMainPopup);
   const isPopupCategory = useSelector(state => state.statePopup.statePopupCategories);
-  
+
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
@@ -131,7 +132,7 @@ function App() {
         console.log(err)
       })
       .finally(() => {
-      setIsPreload(false)
+        setIsPreload(false)
       })
   }
 
@@ -147,7 +148,7 @@ function App() {
         console.log(err)
       })
       .finally(() => {
-      setIsPreload(false)
+        setIsPreload(false)
       })
   }
 
@@ -162,10 +163,9 @@ function App() {
           onExit={handleExit}
         />
         <Preload
-        isPreload={isPreload}/>
+          isPreload={isPreload} />
         <Switch>
           <Route exact path="/">
-            
             <Main />
           </Route>
           <Route
@@ -175,16 +175,28 @@ function App() {
                 <Word
                   openMainPopup={openMainPopup}
                 />
-                
+
               </ProtectedRoute>
             }
           />
 
           <Route
+            exact path="/profile"
+            children={
+              <ProtectedRoute loggedIn={loggedIn}>
+                <Profile
+                />
+              </ProtectedRoute>
+            }
+          />
+
+
+
+          <Route
             exact path="/IrregularVerbs"
             children={
               <ProtectedRoute loggedIn={loggedIn}>
-                <IrregularVerbs/>
+                <IrregularVerbs />
               </ProtectedRoute>
             }
           />

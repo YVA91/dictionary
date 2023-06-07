@@ -1,13 +1,10 @@
 import './IrregularVerbs.css';
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import arrowLeft from '../../images/arrow-left.svg';
 import arrowRight from '../../images/arrow-right.svg';
 import IrrerularVerbs from '../../vendor/array/irregularVerbs'
 
 function IrregularVerbs() {
-  console.log(IrrerularVerbs)
-
   
   function handleSound() {
     const voices = window.speechSynthesis.getVoices();
