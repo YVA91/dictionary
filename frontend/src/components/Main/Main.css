@@ -1,11 +1,11 @@
 .main {
-  display: flex;
+  /*display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column;*/
   padding: 100px 0;
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0 0 0 100px;
 }
 
 .mainTitle {
@@ -42,5 +42,6 @@
 
   .main {
     padding: 20px 0;
+    margin: 0 auto;
   }
 }

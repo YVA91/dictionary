@@ -1,4 +1,4 @@
-.formregister {
+/*.formregister {
   margin: 0 auto;
   padding: 25px 0;
   max-width: 358px;
@@ -21,25 +21,16 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  color: #836464;
+  color: #fff;
 }
 
 .formregister__item_link {
   cursor: pointer;
   text-decoration: none;
-  color: #4285F4;
+  color: #f44242;
   transition: .5s;
 }
 
 .formregister__item_link:hover {
   opacity: 0.6;
-}
-
-
-
-@media screen and (max-width: 768px) {
- 
-
-
-
-}
+}*/

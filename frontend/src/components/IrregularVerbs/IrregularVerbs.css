@@ -2,6 +2,8 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  background-color: #00000085;
+  border-radius: 10px;
 }
 
 .verbs__title {
@@ -16,7 +18,7 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  color: #3f1174;
+  color: var(--text-color-white);
 }
 
 .verbs__button_left {
@@ -72,12 +74,12 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  color: #3f1174;
+  color: var(--text-color-white);
   text-align: center;
   margin: 0 auto;
   padding: 5px;
   width: 20%;
-  border: 1px solid #3f1174;
+  border: 1px solid var(--text-color-white);
   box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis;

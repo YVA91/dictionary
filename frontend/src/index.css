@@ -2,19 +2,28 @@
 @import url(./vendor/fonts/tucsonone.css);
 @import url(./vendor/fonts/lobster.css);
 @import url(./vendor/fonts/Lora/lora.css);
+@import url(./vendor/fonts/Cormorant_Garamond/cormorant.css);
+
 
 html {
   height: 100%;
 }
 body {
-  background-color: #90f1f1;
+  background-image: url(../src/images/london.jpeg);
+  background-attachment: fixed;
+  background-position: center;
   margin: 0, auto;
   padding: 0;
   font-family: 'Tucsonone', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-
+  --text-font: 'Cormоrant', Arial, sans-serif;
+  --text-font-one: 'Lobster', Arial, sans-serif;
+  --text-color-white: #ffffff;
+  --text-color-red: #ff0c0c;
+  --text-color-violet: #3f1174;
+  --text-color-blue: #4285F4;
 }
 
 .root {
@@ -22,4 +31,13 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  --text-font: 'Cormоrant', Arial, sans-serif;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #2323230a;
 }

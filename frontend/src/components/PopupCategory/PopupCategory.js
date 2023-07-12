@@ -34,7 +34,7 @@ function PopupCategory({ onSubmit, onSubmitPatchCollection }) {
     MainApi.deleteWordCollection(collectionId)
       .then((data) => {
         setAllCollection((state) => state.filter((c) => c._id !== data._id));
-        if (data.WordId._id == JSON.parse(localStorage.getItem('collection'))._id) {
+        if (data.WordId._id === JSON.parse(localStorage.getItem('collection'))._id) {
           localStorage.removeItem('collection')
         }
       })

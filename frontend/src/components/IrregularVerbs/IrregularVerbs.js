@@ -40,10 +40,10 @@ function IrregularVerbs() {
         ))}
       </ul>
       <Link to="/word" className="verbs__button_left">
-        <img src={arrowLeft} className="verbs__arrow" />
+        <img src={arrowLeft} className="verbs__arrow" alt="влево"/>
       </Link>
       <Link to="/word" className="verbs__button_right">
-        <img src={arrowRight} className="verbs__arrow" />
+        <img src={arrowRight} className="verbs__arrow" alt="влево"/>
       </Link>
 
 

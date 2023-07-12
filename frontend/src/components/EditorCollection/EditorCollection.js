@@ -7,8 +7,6 @@ function EditorCollection({ onSubmit, editorBlok, isChangeCategory, changeCatego
 
   const [addItem, setAddItem] = useState([{}])
   const [addItemCollection, setAddItemCollection] = useState(isChangeCategory.word)
-  console.log(changeCategory)
-
 
   const [valueCollection, setValueCollection] = useState(isChangeCategory.name);
 

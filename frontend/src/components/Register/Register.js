@@ -1,4 +1,4 @@
-import './Register.css'
+/*import './Register.css'*/
 import AuthForm from '../AuthForm/AuthForm';
 import { Link } from 'react-router-dom';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation'
