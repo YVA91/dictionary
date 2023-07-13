@@ -7,13 +7,12 @@ const mainPopup = createSlice({
     isWord: '',
     isCollection: '',
     isFilter: []
-    
   },
   reducers: {
     popup: (state, action) => {
       state.isMainPopup = true;
       state.isWord = (JSON.parse(localStorage.getItem('collection')).word[Math.floor(Math.random() * JSON.parse(localStorage.getItem('collection')).word.length)]);
-      state.isFilter = state.isFilter.filter((c) => c._id !== state.isWord._id);
+      state.isFilter = (JSON.parse(localStorage.getItem('collection')).word);
       state.isCollection = JSON.parse(localStorage.getItem('collection'))
     },
     filterWord: (state, action) => {

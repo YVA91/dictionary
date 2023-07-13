@@ -1,6 +1,19 @@
 .profile {
   max-width: 1280px;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
+  /*padding: 0 30px;*/
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile__col-avatar {
+  width: 30%;
+  height: 100%;
+  background-color: #fffbfbd2;
+  border-radius: 10px;
+  margin-left: 30px;
 }
 
 .profile__title {
@@ -17,4 +30,12 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+}
+
+.profile__col-info {
+  width: 60%;
+  height: 100%;
+  background-color: #fffbfbd2;
+  border-radius: 10px;
+  margin-right: 30px;
 }

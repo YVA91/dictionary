@@ -25,8 +25,6 @@ const statePopup = createSlice({
     },
 
 
-
-
     filterWord: (state, action) => {
       state.isWord = (state.isFilter[Math.floor(Math.random() * state.isFilter.length)]);
       state.isFilter = state.isFilter.filter((c) => c._id !== state.isWord._id);

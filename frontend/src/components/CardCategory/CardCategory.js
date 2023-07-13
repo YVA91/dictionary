@@ -19,7 +19,6 @@ function CardCategory({ onEdit, collection, onDeleteCollection, setAllCollection
   }
 
   return (
-
     <section className="cardCategory">
       <button className="cardCategory__title" type="button" onClick={choiceCollection}>
         {collection.name} ({collection.word.length})

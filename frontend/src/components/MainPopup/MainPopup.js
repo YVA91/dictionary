@@ -48,8 +48,8 @@ function MainPopup() {
     const voices = window.speechSynthesis.getVoices();
     const lastVoice = voices[voices.length - 3];
     const utterance = new SpeechSynthesisUtterance(isWord.wordEn);
-    /*utterance.lang = "en-US"
-    utterance.lang = "es-Es"*/
+    utterance.lang = "en-US"
+    /*utterance.lang = "es-Es"*/
     utterance.voice = lastVoice;
     utterance.pitch = 0.8;  // пониже
     utterance.rate = 1.2;   // побыстрее

@@ -40,7 +40,6 @@ export const getUserInfo = () => {
     .then(report)
 };
 
-
 export const getWordCollecton = () => {
   return fetch(`${BASE_URL}/words`, {
     headers: {

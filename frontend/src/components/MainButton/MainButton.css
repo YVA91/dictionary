@@ -13,7 +13,7 @@
   margin: 0;
   border-radius: 5px;
   cursor: pointer;
-  border: 3px solid #3d7013;
+  border: 3px solid var(--text-color-red);
   box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #3b0a0a;
   font-family: 'Tucsonone', Arial, sans-serif;
   font-weight: 400;
@@ -25,7 +25,7 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  color: #3d7013;
+  color: var(--text-color-red);
 }
 
 .mainButton__button:active {
@@ -34,6 +34,13 @@
   box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
 }
 
+.mainButton__button:disabled {
+  color: #2c2020;
+  border: #2c2020;
+  top: 0;
+  left: 0;
+  box-shadow: none;
+}
 
 @media screen and (max-width: 420px) {
   .mainButton__button {

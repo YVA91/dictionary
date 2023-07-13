@@ -21,7 +21,7 @@
   text-rendering: optimizeLegibility;
   color: #3b0a0a;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 20px 30px 20px;
   opacity: .4;
   cursor: pointer;
 }
@@ -39,12 +39,14 @@
 }
 
 .header__button {
+  width: 20%;
+  text-align: center;
   border: none;
   padding: 5px;
   margin: 0;
   background-color: inherit;
   cursor: pointer;
-  color: #3f1174;
+  color: var( --text-color-violet);
   font-family: 'Tucsonone', Arial, sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -60,15 +62,12 @@
 }
 
 .header__button:hover {
-  border-radius: 20px;
-  background-color: #f7e097;
+  color: var( --text-color-red);
 }
 
 .header__button:active{
-  box-shadow: 0 0 20px 20px #f7e097;
-  background-color: #f7e097;
-  border-radius: 20px;
-  
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .header__profile-name {
